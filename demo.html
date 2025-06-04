@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Demo | Bolgini - Experience AI Calling Agent Live</title>
+    <meta name="description" content="Experience Bolgini's AI calling agent in action. Watch live demos, interact with our AI, and see how human-like conversations drive business results.">
+    <meta name="keywords" content="AI calling agent demo, live AI demonstration, AI phone agent test, automated calling demo, business AI preview">
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Latest compiled and minified CSS -->
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/js/bootstrap.min.js">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .demo-section {
+            padding: 80px 0;
+        }
+        .demo-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        .demo-type {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .demo-video {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .demo-video iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        .demo-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .demo-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        .interactive-demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        .phone-mockup {
+            background: #333;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 300px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .screen {
+            background: #000;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .call-status {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .call-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #667eea;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        .call-actions {
+            margin-top: 30px;
+        }
+        .call-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .call-green {
+            background: #28a745;
+            color: white;
+        }
+        .call-red {
+            background: #dc3545;
+            color: white;
+        }
+        .call-button:hover {
+            transform: scale(1.1);
+        }
+        .transcript-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        .transcript-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .message.ai {
+            background: #e3f2fd;
+            margin-left: 50px;
+        }
+        .message.human {
+            background: #f3e5f5;
+            margin-right: 50px;
+        }
+        .message-header {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+<!--Header  -->
+<div class="sub-banner">
+    <header class="header">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="./index.html"><figure class="mb-0 banner-logo"><img src="./assets/images/logo-h.png" alt="" class="img-fluid"></figure></a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./about.html">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Product
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="./features.html">Features</a>
+                                <a class="dropdown-item" href="./use-cases.html">Use Cases</a>
+                                <a class="dropdown-item" href="./pricing.html">Pricing</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./demo.html">Demo</a>
+                        </li>
+                        <li class="nav-space nav-item">
+                            <a class="nav-link" href="./contact.html">Contact us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link lets_talk" href="./enquiry.html">Book Demo<i class="circle fa-regular fa-angle-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <figure class="sub-bannersideshape mb-0">
+        <img src="./assets/images/sub-bannersideshape.png" alt="" class="img-fluid">
+    </figure>
+<!-- Sub-Banner -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12 col-12">
+                    <div class="banner_content" data-aos="fade-right">
+                        <h1 class="text-white">Live Demo</h1>
+                        <p class="text-white">Experience Bolgini's AI calling agent in action. See how human-like conversations, real-time analytics, and intelligent responses transform business communications.</p>
+                        <div class="box">
+                            <span class="mb-0">Home</span><i class="first fa-regular fa-angle-right"></i><i class="second fa-regular fa-angle-right"></i><span class="mb-0 box_span">Demo</span>
+                        </div> 
+                    </div>
+                </div> 
+                <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                    <div class="banner_wrapper">
+                        <figure class="mb-0 sub-bannerimage">
+                            <img src="./assets/images/sub-bannerimage.png" alt="" class="">
+                        </figure> 
+                    </div>  
+                </div>
+            </div>
+        </div> 
+        <figure class="sub-bannersideshape2 mb-0">
+            <img src="./assets/images/sub-bannersideshape2.png" alt="" class="img-fluid">
+        </figure>
+    </section>
+</div>
+
+<!-- Demo Videos Section -->
+<section class="demo-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h5 style="color: #667eea; font-weight: 600; margin-bottom: 20px;">See It In Action</h5>
+                <h2 style="margin-bottom: 60px;">Bolgini Demo Collection</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                <div class="demo-card">
+                    <span class="demo-type">Sales Outreach</span>
+                    <h4>AI Lead Generation Call</h4>
+                    <div class="demo-video">
+                        <iframe src="https://www.youtube.com/embed/5hSwLm99eW8" allowfullscreen></iframe>
+                    </div>
+                    <p>Watch how Bolgini conducts a natural sales conversation, qualifies leads, and schedules follow-up meetings with potential customers.</p>
+                    <div class="demo-controls">
+                        <a href="#" class="demo-button" onclick="startDemo('sales')">Try Sales Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="demo-card">
+                    <span class="demo-type">Customer Support</span>
+                    <h4>AI Customer Service Call</h4>
+                    <div class="demo-video">
+                        <iframe src="https://www.youtube.com/embed/ae-33lIlFj8" allowfullscreen></iframe>
+                    </div>
+                    <p>Experience how Bolgini handles customer inquiries, resolves issues, and provides excellent support with human-like empathy.</p>
+                    <div class="demo-controls">
+                        <a href="#" class="demo-button" onclick="startDemo('support')">Try Support Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                <div class="demo-card">
+                    <span class="demo-type">Healthcare</span>
+                    <h4>Appointment Scheduling</h4>
+                    <div class="demo-video">
+                        <iframe src="https://www.youtube.com/embed/Kw0wGQNz4Zg" allowfullscreen></iframe>
+                    </div>
+                    <p>See how Bolgini manages healthcare appointments, sends reminders, and handles patient communications professionally.</p>
+                    <div class="demo-controls">
+                        <a href="#" class="demo-button" onclick="startDemo('healthcare')">Try Healthcare Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200">
+                <div class="demo-card">
+                    <span class="demo-type">Real Estate</span>
+                    <h4>Property Inquiry Call</h4>
+                    <div class="demo-video">
+                        <iframe src="https://www.youtube.com/embed/qTsqEnhHbQo" allowfullscreen></iframe>
+                    </div>
+                    <p>Watch Bolgini qualify property leads, provide information, and schedule viewings in multiple languages.</p>
+                    <div class="demo-controls">
+                        <a href="#" class="demo-button" onclick="startDemo('realestate')">Try Real Estate Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Demo Section -->
+<section class="interactive-demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 style="margin-bottom: 20px;">Interactive Demo</h2>
+                <p style="font-size: 18px; margin-bottom: 50px; opacity: 0.9;">
+                    Experience a live conversation with Bolgini. Click the phone to start an interactive demo call.
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div id="call-interface">
+                            <div class="call-status" id="call-status">Ready to start demo</div>
+                            <div class="call-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="call-name">Bolgini AI Agent</div>
+                            <div class="call-actions">
+                                <button class="call-button call-green" onclick="startCall()" id="start-call">
+                                    <i class="fas fa-phone"></i>
+                                </button>
+                                <button class="call-button call-red" onclick="endCall()" id="end-call" style="display: none;">
+                                    <i class="fas fa-phone-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Call Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2.3s</div>
+                        <div class="stat-label">Average Response Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">Conversion Improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Availability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Live Transcript Section -->
+<section class="transcript-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h5 style="color: #667eea; font-weight: 600; margin-bottom: 20px;">Real Conversation</h5>
+                <h2 style="margin-bottom: 60px;">Live Call Transcript</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="transcript-box" id="transcript-box">
+                    <div class="message ai">
+                        <div class="message-header">Bolgini AI Agent</div>
+                        <div>Hello! This is Sarah from Bolgini. How are you doing today?</div>
+                    </div>
+                    <div class="message human">
+                        <div class="message-header">You</div>
+                        <div>Hi Sarah, I'm doing well. What can I help you with?</div>
+                    </div>
+                    <div class="message ai">
+                        <div class="message-header">Bolgini AI Agent</div>
+                        <div>I'm calling to discuss how our AI calling solutions can help streamline your business communications. Do you currently handle a lot of phone calls in your business?</div>
+                    </div>
+                    <div class="message human">
+                        <div class="message-header">You</div>
+                        <div>Yes, we do. We spend a lot of time on customer support and sales calls.</div>
+                    </div>
+                    <div class="message ai">
+                        <div class="message-header">Bolgini AI Agent</div>
+                        <div>That's exactly what we help with! Our AI can handle up to 80% of routine calls, allowing your team to focus on more complex tasks. Would you be interested in a quick demo to see how it works?</div>
+                    </div>
+                </div>
+                <div class="demo-controls">
+                    <a href="./enquiry.html" class="demo-button">Book Personalized Demo</a>
+                    <a href="#" class="demo-button" onclick="addTranscriptMessage()">Continue Conversation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Showcase -->
+<section class="service-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="service_content">
+                    <h5>Demo Features</h5>
+                    <h2>What You'll Experience in Our Demo</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" data-aos="fade-right">
+                <div class="service-box">
+                    <figure class="service-reboticon">
+                        <img src="./assets/images/service-reboticon.png" alt="" class="img-fluid">
+                    </figure>
+                    <h4>Natural Conversation Flow</h4>
+                    <p class="text-size-16">Experience how Bolgini maintains context, asks relevant follow-up questions, and responds naturally like a human agent.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" data-aos="fade-left">
+                <div class="service-box">
+                    <figure class="service-analysicon">
+                        <img src="./assets/images/service-analysicon.png" alt="" class="img-fluid">
+                    </figure>
+                    <h4>Real-Time Analytics</h4>
+                    <p class="text-size-16">See live sentiment analysis, conversation quality scores, and business insights generated during the demo call.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" data-aos="fade-right">
+                <div class="service-box">
+                    <figure class="service-learningicon">
+                        <img src="./assets/images/service-learningicon.png" alt="" class="img-fluid">
+                    </figure>
+                    <h4>Intelligent Escalation</h4>
+                    <p class="text-size-16">Watch how Bolgini recognizes when to transfer calls to human agents and the seamless handoff process.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" data-aos="fade-left">
+                <div class="service-box">
+                    <figure class="service-metalicon">
+                        <img src="./assets/images/service-metalicon.png" alt="" class="img-fluid">
+                    </figure>
+                    <h4>Multilingual Capabilities</h4>
+                    <p class="text-size-16">Test Bolgini's ability to switch languages mid-conversation and maintain the same quality across different languages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="interactive-demo" style="padding: 60px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 style="margin-bottom: 20px;">Ready for Your Custom Demo?</h2>
+                <p style="font-size: 18px; margin-bottom: 30px; opacity: 0.9;">
+                    Book a personalized demo tailored to your industry and use case. Our experts will show you exactly how Bolgini can transform your business communications.
+                </p>
+                <a href="./enquiry.html" class="demo-button" style="font-size: 18px; padding: 20px 40px;">
+                    Book Personalized Demo
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<section class="footer-section">
+    <div class="container">
+        <figure class="footer-sideshape mb-0">
+            <img src="./assets/images/footer-sideshape.png" alt="" class="img-fluid">
+        </figure>
+        <div class="middle-portion">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-12">
+                    <a href="./index.html">
+                        <figure class="footer-logo">
+                            <img src="./assets/images/logo.png" class="img-fluid" alt="">
+                        </figure>
+                    </a>
+                    <p class="text-size-16 footer-text text-white">Bolgini transforms business communications with AI-powered calling agents that deliver human-like conversations, business intelligence, and actionable insights.</p>
+                    <ul class="list-unstyled mb-0 social-icons">
+                        <li class="circle"><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li class="circle"><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li class="circle"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-12 col-12 d-md-block d-none">
+                    <div class="links">
+                        <h4 class="heading text-white">Quick Links</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./index.html" class=" text-size-16 text text-decoration-none">Home</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./about.html" class=" text-size-16 text text-decoration-none">About</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./features.html" class=" text-size-16 text text-decoration-none">Features</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./use-cases.html" class=" text-size-16 text text-decoration-none">Use Cases</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./contact.html" class=" text-size-16 text text-decoration-none">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2 col-sm-12 col-12 d-lg-block d-none">
+                    <div class="links list-pd">
+                        <h4 class="heading text-white">Product</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./features.html" class=" text-size-16 text text-decoration-none">Features</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./pricing.html" class=" text-size-16 text text-decoration-none">Pricing</a></li>
+                            <li><i class="fa-solid fa-angle-right"></i><a href="./demo.html" class=" text-size-16 text text-decoration-none">Demo</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-sm-block">
+                    <div class="icon">
+                        <h4 class="heading text-white">Contact us</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li class="text">
+                                <i class="fa fa-phone fa-icon footer-location"></i>
+                                <a href="tel:+919873062228" class="mb-0 text text-decoration-none text-size-16">+91 9 8730 62228</a></li>
+                            <li class="text">
+                                <i class="fa fa-envelope fa-icon footer-location"></i>
+                                <a href="mailto:info@bolgini.com" class="mb-0 text text-decoration-none text-size-16">info@bolgini.com</a></li>
+                            <li class="text">
+                                <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                <p class="text-size-16">Silicon Valley, Nagpur</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fixed-form-container">
+            <div class="image">
+                <figure class="footer-image mb-0">
+                    <img src="./assets/images/footer-image.png" alt="" class="img-fluid">
+                </figure>
+            </div>
+            <div class="body">
+                <form id="contactpage1" method="POST" action="https://submit.bolgini.com/contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name:" name="name"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email:" name="emailid">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone:" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form_style" placeholder="Message" rows="3" name="msg"></textarea>
+                    </div>
+                    <button type="submit" class="submit_now text-decoration-none">Submit Now</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0 text-white">Copyright 2025, Bolgini.com All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest compiled JavaScript -->
+<script src="assets/js/jquery-3.6.0.min.js"> </script>
+<script src="assets/js/bootstrap.min.js"> </script>
+<script src="assets/js/video_link.js"></script>
+<script src="./assets/js/video.js"></script>
+<script src="assets/js/counter.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/animation_links.js"></script>
+<script src="assets/js/animation.js"></script>
+
+<script>
+// Interactive Demo Functionality
+let callActive = false;
+const responses = [
+    "Thank you for trying our demo! I can help you understand how Bolgini works.",
+    "Our AI can handle various types of calls - from sales to customer support. What would you like to know?",
+    "We support over 100 languages and can adapt to your business needs. Shall I show you our analytics features?",
+    "Based on our conversation, I can see you're interested in automation. Would you like to schedule a personalized demo?",
+    "That's a great question! Our sentiment analysis shows positive engagement. How can we help your business grow?"
+];
+let responseIndex = 0;
+
+function startCall() {
+    if (!callActive) {
+        callActive = true;
+        document.getElementById('call-status').textContent = 'Connected - Speaking with Bolgini';
+        document.getElementById('start-call').style.display = 'none';
+        document.getElementById('end-call').style.display = 'inline-block';
+        
+        // Simulate call progress
+        setTimeout(() => {
+            if (callActive) {
+                document.getElementById('call-status').textContent = 'Conversation in progress...';
+                addDemoMessage();
+            }
+        }, 2000);
+    }
+}
+
+function endCall() {
+    callActive = false;
+    document.getElementById('call-status').textContent = 'Call ended - Thank you!';
+    document.getElementById('start-call').style.display = 'inline-block';
+    document.getElementById('end-call').style.display = 'none';
+    
+    setTimeout(() => {
+        document.getElementById('call-status').textContent = 'Ready to start demo';
+    }, 3000);
+}
+
+function startDemo(type) {
+    alert(`Starting ${type} demo! In a real implementation, this would launch an interactive demo for ${type} scenarios.`);
+}
+
+function addDemoMessage() {
+    if (responseIndex < responses.length) {
+        const transcript = document.getElementById('transcript-box');
+        const message = document.createElement('div');
+        message.className = 'message ai';
+        message.innerHTML = `
+            <div class="message-header">Bolgini AI Agent</div>
+            <div>${responses[responseIndex]}</div>
+        `;
+        transcript.appendChild(message);
+        transcript.scrollTop = transcript.scrollHeight;
+        responseIndex++;
+    }
+}
+
+function addTranscriptMessage() {
+    const userResponses = [
+        "How accurate is the AI?",
+        "Can it integrate with our CRM?",
+        "What about pricing?",
+        "How quickly can we get started?",
+        "This looks promising!"
+    ];
+    
+    const transcript = document.getElementById('transcript-box');
+    
+    // Add user message
+    const userMessage = document.createElement('div');
+    userMessage.className = 'message human';
+    userMessage.innerHTML = `
+        <div class="message-header">You</div>
+        <div>${userResponses[Math.floor(Math.random() * userResponses.length)]}</div>
+    `;
+    transcript.appendChild(userMessage);
+    
+    // Add AI response after delay
+    setTimeout(() => {
+        addDemoMessage();
+    }, 1000);
+    
+    transcript.scrollTop = transcript.scrollHeight;
+}
+</script>
+</body>
+</html>
