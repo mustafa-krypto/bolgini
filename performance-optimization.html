@@ -1,0 +1,235 @@
+<!-- Critical CSS for above-the-fold content -->
+<style>
+/* Critical CSS - Load immediately for better Core Web Vitals */
+.header { background: #fff; position: fixed; width: 100%; z-index: 1000; }
+.navbar-brand img { height: 60px; }
+.banner-section { padding-top: 120px; min-height: 70vh; }
+.banner_content h1 { font-size: 3.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem; }
+.text-white { color: #fff !important; }
+.btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; padding: 15px 30px; border-radius: 30px; }
+
+/* Loading animation for better perceived performance */
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Optimize font loading */
+@font-display: swap;
+</style>
+
+<!-- Preload critical resources -->
+<link rel="preload" href="assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="assets/images/logo.png" as="image">
+<link rel="preload" href="assets/js/jquery-3.6.0.min.js" as="script">
+
+<!-- DNS prefetch for external resources -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="//unpkg.com">
+
+<!-- Preconnect to improve loading speed -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Optimized Google Fonts loading -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Async loading for non-critical CSS -->
+<noscript>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</noscript>
+
+<!-- Service Worker for caching (Progressive Web App) -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+      console.log('SW registered: ', registration);
+    })
+    .catch(function(registrationError) {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
+}
+</script>
+
+<!-- Enhanced performance monitoring -->
+<script>
+// Monitor Core Web Vitals
+function getCLS(onPerfEntry) {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({getCLS}) => getCLS(onPerfEntry));
+  }
+}
+
+function getFID(onPerfEntry) {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({getFID}) => getFID(onPerfEntry));
+  }
+}
+
+function getFCP(onPerfEntry) {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({getFCP}) => getFCP(onPerfEntry));
+  }
+}
+
+function getLCP(onPerfEntry) {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({getLCP}) => getLCP(onPerfEntry));
+  }
+}
+
+function getTTFB(onPerfEntry) {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({getTTFB}) => getTTFB(onPerfEntry));
+  }
+}
+
+// Report performance metrics
+function sendToAnalytics(metric) {
+  if (window.gtag) {
+    gtag('event', metric.name, {
+      event_category: 'Web Vitals',
+      value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+      event_label: metric.id,
+      non_interaction: true,
+    });
+  }
+}
+
+// Initialize performance monitoring
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getFCP(sendToAnalytics);
+getLCP(sendToAnalytics);
+getTTFB(sendToAnalytics);
+</script>
+
+<!-- Optimized image loading -->
+<script>
+// Lazy loading for images
+function lazyLoadImages() {
+  const images = document.querySelectorAll('img[data-src]');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', lazyLoadImages);
+</script>
+
+<!-- JSON-LD for enhanced search performance -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bolgini",
+  "url": "https://bolgini.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://bolgini.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "sameAs": [
+    "https://www.facebook.com/bolgini",
+    "https://www.twitter.com/bolgini",
+    "https://www.linkedin.com/company/bolgini"
+  ]
+}
+</script>
+
+<!-- Enhanced mobile optimization -->
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bolgini AI">
+
+<!-- Performance hints -->
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta http-equiv="x-prerender" content="1">
+
+<!-- Resource hints for better loading -->
+<link rel="modulepreload" href="assets/js/app.js">
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Critical resource optimization -->
+<script>
+// Optimize critical resource loading
+(function() {
+  'use strict';
+  
+  // Preload critical images
+  const criticalImages = [
+    'assets/images/logo.png',
+    'assets/images/banner-rightimage.png',
+    'assets/images/hero-background.jpg'
+  ];
+  
+  criticalImages.forEach(src => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    document.head.appendChild(link);
+  });
+  
+  // Async script loading
+  function loadScript(src, callback) {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = src;
+    script.onload = callback;
+    document.head.appendChild(script);
+  }
+  
+  // Load non-critical scripts after page load
+  window.addEventListener('load', function() {
+    loadScript('assets/js/animation.js');
+    loadScript('assets/js/counter.js');
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js', function() {
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+    });
+  });
+})();
+</script>
+
+<!-- Error boundary for better UX -->
+<script>
+window.addEventListener('error', function(e) {
+  console.error('Global error:', e.error);
+  // Optionally send to error tracking service
+});
+
+window.addEventListener('unhandledrejection', function(e) {
+  console.error('Unhandled promise rejection:', e.reason);
+  // Optionally send to error tracking service
+});
+</script>

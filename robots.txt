@@ -1,0 +1,62 @@
+User-agent: *
+Allow: /
+
+# Prioritize important pages
+Allow: /index.html
+Allow: /features.html
+Allow: /pricing.html
+Allow: /demo.html
+Allow: /use-cases.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /enquiry.html
+Allow: /service.html
+Allow: /projects.html
+
+# Blog content optimization
+Allow: /blog.html
+Allow: /blog/
+Allow: /blog/*.html
+Allow: /blog/outbound-sales-automation-guide.html
+Allow: /blog/inbound-call-automation-guide.html  
+Allow: /blog/roi-calculator-ai-calling-agents.html
+Allow: /blog/multilingual-ai-calling-agents.html
+Allow: /blog/business-intelligence-ai-conversations.html
+
+# Industry-specific pages
+Allow: /healthcare-ai-calling-agent.html
+Allow: /real-estate-ai-calling-agent.html
+Allow: /ecommerce-ai-calling-agent.html
+Allow: /education-ai-calling-agent.html
+Allow: /financial-services-ai-calling-agent.html
+Allow: /saas-technology-ai-calling-agent.html
+Allow: /insurance-ai-calling-agent.html
+Allow: /automotive-ai-calling-agent.html
+Allow: /manufacturing-ai-calling-agent.html
+Allow: /legal-services-ai-calling-agent.html
+Allow: /nonprofit-ai-calling-agent.html
+Allow: /hospitality-tourism-ai-calling-agent.html
+Allow: /construction-contracting-ai-calling-agent.html
+
+# Geographic targeting
+Allow: /ai-calling-agent-india.html
+
+# Voice search optimization
+Allow: /voice-search-optimization.html
+
+# Allow assets
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Block backup files and development folders
+Disallow: /backup/
+Disallow: /*.backup
+Disallow: /temp/
+Disallow: /test/
+
+# Sitemap location
+Sitemap: https://bolgini.com/sitemap.xml
+
+# Crawl delay for bots
+Crawl-delay: 1
