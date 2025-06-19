@@ -3,7 +3,11 @@ agenticmindz
 
 .DS_Store 
 backup.zip
+
+server-agentic.js
 server.js
+server-new.js
+
 .env
 node_modules
 package-lock.json
