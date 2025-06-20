@@ -1225,8 +1225,7 @@
                 opacity: 0;
             }
         }
-          /* Enhanced Mobile Responsiveness */
-        @media (max-width: 768px) {
+          /* Enhanced Mobile Responsiveness */        @media (max-width: 768px) {
             .ai-circuit-overlay,
             .digital-rain,
             .ai-data-stream,
@@ -1242,18 +1241,29 @@
               .hero-main-title {
                 font-size: 1.8rem;
                 white-space: normal;
-                border-right: none;
-                animation: none;
-                width: auto;
+                border-right: none !important;
+                animation: none !important;
+                width: auto !important;
                 line-height: 1.3;
+                overflow: visible !important;
+            }
+            
+            /* Mobile: Show video immediately, hide overlay faster */
+            .hero-text-overlay {
+                opacity: 0;
+                display: none;
+            }
+            
+            .banner-video-container iframe {
+                opacity: 1 !important;
             }
             
             .hero-media-container {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             
             .hero-content-below {
-                margin-top: 20px;
+                margin-top: 15px;
             }
               .hero-subtitle {
                 font-size: 1rem;
@@ -1452,8 +1462,7 @@
                                     allowfullscreen
                                     loading="lazy">
                                 </iframe>
-                                
-                                <!-- Text Overlay (shows initially, fades out after animation) -->
+                                  <!-- Text Overlay (shows initially, fades out after animation) -->
                                 <div class="hero-text-overlay">
                                     <div class="ai-genie-magic"></div>
                                     <!-- AI Pulse Rings -->
@@ -1461,7 +1470,11 @@
                                     <div class="ai-pulse-ring"></div>
                                     <div class="ai-pulse-ring"></div>
                                     
-                                    <h1 class="text-white hero-main-title">Transform Business Communications with BolGini AI Voice Agent</h1>
+                                    <!-- Desktop animated title -->
+                                    <h1 class="text-white hero-main-title d-none d-md-block">Transform Business Communications with BolGini AI Voice Agent</h1>
+                                    
+                                    <!-- Mobile static title (shows immediately) -->
+                                    <h1 class="text-white d-md-none" style="font-size: 1.8rem; line-height: 1.3; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Transform Business Communications with BolGini AI Voice Agent</h1>
                                     
                                     <!-- AI Loading Bar -->
                                     <div class="ai-loading-bar">
@@ -2168,27 +2181,36 @@ $(document).ready(function() {
     initAIParticles();
     initFloatingIcons();
     startVoiceWaveInteraction();
-    addGenieInteractions();
-      // Hero Video + Text Overlay Sequence
+    addGenieInteractions();      // Hero Video + Text Overlay Sequence
     function initHeroSequence() {
         const textOverlay = $('.hero-text-overlay');
         const videoIframe = $('#hero-video');
         
         if (textOverlay.length && videoIframe.length) {
-            // Start text animation immediately
-            setTimeout(function() {
-                // After text typing animation completes (6s + 1.5s pause)
+            // Check if mobile device
+            const isMobile = $(window).width() <= 768;
+            
+            if (isMobile) {
+                // Mobile: Show video immediately, hide overlay
+                textOverlay.hide();
+                videoIframe.addClass('video-revealed');
+                console.log('Mobile detected: Video shown immediately');
+            } else {
+                // Desktop: Start text animation sequence
                 setTimeout(function() {
-                    // Hide text overlay with smooth transition
-                    textOverlay.addClass('overlay-hidden');
-                    
-                    // Reveal video with fade-in
+                    // After text typing animation completes (6s + 1.5s pause)
                     setTimeout(function() {
-                        videoIframe.addClass('video-revealed');
-                    }, 700);
-                    
-                }, 8000); // 6s typing + 1.5s pause + 0.5s extra buffer
-            }, 100);
+                        // Hide text overlay with smooth transition
+                        textOverlay.addClass('overlay-hidden');
+                        
+                        // Reveal video with fade-in
+                        setTimeout(function() {
+                            videoIframe.addClass('video-revealed');
+                        }, 700);
+                        
+                    }, 6000); // 6s typing + 1.5s pause + 0.5s extra buffer
+                }, 100);
+            }
         }
     }
     
@@ -2199,9 +2221,28 @@ $(document).ready(function() {
         console.log('Hero video loading error detected');
         // Fallback: show static image
         $(this).parent().append('<img src="./assets/images/banner-image.png" alt="Bolgini AI Demo" class="fallback-image" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:0;">');
-    });
-      // Initialize hero sequence
+    });    // Initialize hero sequence
     initHeroSequence();
+    
+    // Handle window resize for mobile/desktop switching
+    $(window).on('resize', function() {
+        const textOverlay = $('.hero-text-overlay');
+        const videoIframe = $('#hero-video');
+        const isMobile = $(window).width() <= 768;
+        
+        if (isMobile) {
+            // Switched to mobile: show video immediately
+            textOverlay.hide();
+            videoIframe.addClass('video-revealed');
+        } else {
+            // Switched to desktop: restore overlay if needed
+            if (textOverlay.is(':hidden')) {
+                textOverlay.show().removeClass('overlay-hidden');
+                // Restart the sequence for desktop
+                initHeroSequence();
+            }
+        }
+    });
     
     // Initialize AI sound simulation
     simulateAISounds();
