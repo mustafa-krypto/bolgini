@@ -158,8 +158,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/images/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Content Security Policy for better error handling -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://unpkg.com https://submit.bolgini.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://submit.bolgini.com https://www.youtube-nocookie.com;">
+    
     <!-- Latest compiled and minified CSS -->
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/js/bootstrap.min.js">
@@ -536,10 +539,10 @@
                     <div class="banner-video-wrapper">
                         <div class="banner-video-container">
                             <iframe 
-                                src="https://www.youtube.com/embed/g6tTxpEMPiA?autoplay=1&mute=1&loop=1&playlist=g6tTxpEMPiA&rel=0&controls=0&showinfo=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1" 
-                                title="Bolgini AI Calling Agent - Transform Your Business Communications" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen>
+                                src="https://www.youtube-nocookie.com/embed/WEBcKHAT8fo?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0"
+                                title="Bolgini AI Calling Agent Demo"
+                                allowfullscreen
+                                loading="lazy">
                             </iframe>
                         </div>
                     </div> 
@@ -710,9 +713,11 @@
             <div class="col-lg-6 col-md-12" data-aos="fade-up">
                 <div class="demo-card">
                     <span class="demo-type">Sales Outreach</span>
-                    <h4>AI Lead Generation Call</h4>
-                    <div class="demo-video">
-                        <iframe src="https://www.youtube.com/embed/WEBcKHAT8fo" allowfullscreen></iframe>
+                    <h4>AI Lead Generation Call</h4>                    <div class="demo-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/WEBcKHAT8fo?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0" 
+                                title="AI Lead Generation Call Demo" 
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <p>Watch how Bolgini conducts a natural sales conversation, qualifies leads, and schedules follow-up meetings with potential customers.</p>
                     <div class="demo-controls">
@@ -723,9 +728,11 @@
             <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="demo-card">
                     <span class="demo-type">Customer Support</span>
-                    <h4>AI Customer Service Call</h4>
-                    <div class="demo-video">
-                        <iframe src="https://www.youtube.com/embed/gnM11YWNPDE" allowfullscreen></iframe>
+                    <h4>AI Customer Service Call</h4>                    <div class="demo-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/gnM11YWNPDE?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0" 
+                                title="AI Customer Service Call Demo" 
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <p>Experience how Bolgini handles customer inquiries, resolves issues, and provides excellent support with human-like empathy.</p>
                     <div class="demo-controls">
@@ -738,9 +745,11 @@
             <div class="col-lg-6 col-md-12" data-aos="fade-up">
                 <div class="demo-card">
                     <span class="demo-type">Healthcare</span>
-                    <h4>Appointment Scheduling</h4>
-                    <div class="demo-video">
-                        <iframe src="https://www.youtube.com/embed/joxCK-CX510" allowfullscreen></iframe>
+                    <h4>Appointment Scheduling</h4>                    <div class="demo-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/joxCK-CX510?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0" 
+                                title="Healthcare Appointment Scheduling Demo" 
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <p>See how Bolgini manages healthcare appointments, sends reminders, and handles patient communications professionally.</p>
                     <div class="demo-controls">
@@ -751,9 +760,11 @@
             <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200">
                 <div class="demo-card">
                     <span class="demo-type">Real Estate</span>
-                    <h4>Property Inquiry Call</h4>
-                    <div class="demo-video">
-                        <iframe src="https://www.youtube.com/embed/ae-33lIlFj8" allowfullscreen></iframe>
+                    <h4>Property Inquiry Call</h4>                    <div class="demo-video">
+                        <iframe src="https://www.youtube-nocookie.com/embed/ae-33lIlFj8?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0" 
+                                title="Real Estate Property Inquiry Demo" 
+                                allowfullscreen 
+                                loading="lazy"></iframe>
                     </div>
                     <p>Watch Bolgini qualify property leads, provide information, and schedule viewings in multiple languages.</p>
                     <div class="demo-controls">
@@ -1154,8 +1165,7 @@ $(document).ready(function() {    // Banner video enhancement - add smooth entra
                 form.prepend('<div class="form-status alert alert-danger mt-3">There was an error submitting your request. Please try again later.</div>');            }
         });
     });
-    
-    // Demo Account Modal Form Submission
+      // Demo Account Modal Form Submission
     $('#demoAccountForm').on('submit', function(e) {
         e.preventDefault();
         var form = $(this);
@@ -1199,6 +1209,23 @@ $(document).ready(function() {    // Banner video enhancement - add smooth entra
             }
         });
     });
+    
+    // Suppress YouTube/Google Ads CORS errors in console (optional)
+    if (typeof console !== 'undefined' && console.error) {
+        var originalConsoleError = console.error;
+        console.error = function() {
+            var message = arguments[0];
+            if (typeof message === 'string' && 
+                (message.includes('googleads.g.doubleclick.net') || 
+                 message.includes('CORS policy') ||
+                 message.includes('Failed to load resource'))) {
+                // Suppress YouTube ads related errors
+                return;
+            }
+            // Call original console.error for other errors
+            originalConsoleError.apply(console, arguments);
+        };
+    }
 });
 </script>
 
