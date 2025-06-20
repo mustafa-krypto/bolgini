@@ -309,12 +309,16 @@
         @keyframes heroCursorBlink {
             0%, 50% { border-color: rgba(138, 230, 207, 0.8); }
             51%, 100% { border-color: transparent; }
-        }
-        
-        /* Hero Content Below Video */
+        }        /* Hero Content Below Video */
         .hero-content-below {
             margin-top: 40px;
             text-align: center;
+            position: relative;
+            z-index: 20;
+            padding: 20px;
+            /* Temporary debugging - ensure section is visible */
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
         }
         
         .hero-subtitle {
@@ -811,19 +815,19 @@
         @keyframes aiBlinkCursor {
             0%, 50% { border-color: rgba(138, 230, 207, 0.8); }
             51%, 100% { border-color: transparent; }
-        }
-          /* Enhanced Button Animations */
+        }        /* Enhanced Button Animations */
         .banner-button {
             margin-top: 30px;
+            position: relative;
+            z-index: 100;
         }
-        
-        .banner-button .button1,
+          .banner-button .button1,
         .banner-button .button2 {
             font-size: 18px;
             line-height: 22px;
             font-weight: 700;
             font-family: 'Manrope', sans-serif;
-            padding: 6px 2px 6px 42px; 
+            padding: 15px 25px 15px 60px; 
             text-align: center;
             display: inline-block;
             border-radius: 30px 30px 30px 0;
@@ -833,6 +837,10 @@
             position: relative;
             overflow: hidden;
             margin-right: 15px;
+            margin-bottom: 15px;
+            min-width: 200px;
+            text-decoration: none !important;
+            z-index: 10;
         }
         
         .banner-button .button2 {
@@ -1497,15 +1505,14 @@
                 </div>
                   <!-- Subtitle and CTA Buttons (below video/overlay) -->
                 <div class="hero-content-below" data-aos="fade-up" data-aos-delay="400">
-                    <p class="text-white text-center hero-subtitle">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    
-                    <div class="banner-button text-center">
+                    <p class="text-white text-center hero-subtitle">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                      <div class="banner-button text-center">
                         <a class="button1 text-decoration-none" href="./demo.html">
                             <span>Live Demo</span>
-                            <i class="circle fa-regular fa-angle-right"></i>
+                            <i class="circle fas fa-play"></i>
                         </a>
                         <a class="button2 text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">
-                            <span>🔥 Request Trial Account</span>
-                            <i class="circle fa-regular fa-angle-right"></i>
+                            <span>Request Trial Account</span>
+                            <i class="circle fas fa-rocket"></i>
                         </a>   
                     </div>
                 </div>
