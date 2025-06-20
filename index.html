@@ -211,15 +211,15 @@
             width: 100%;
             height: 0;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        }
-        .banner-video-container iframe {
+        }        .banner-video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
-        }        .banner_wrapper {
+            z-index: 2;
+        }.banner_wrapper {
             position: relative;
             z-index: 2;
         }
@@ -470,14 +470,12 @@
             .demo-benefits {
                 margin-top: 30px;
                 position: static;
-            }
-        }
-        /* Footer floating image enhancements */
+            }        }        /* Footer floating image enhancements */
         .footer-section .footer-image {
             position: absolute;
             right: 90px;
             bottom: 64px;
-            z-index: 1;
+            z-index: 99999;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
         }
@@ -528,7 +526,7 @@
             text-align: center;
             box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
             animation: bounce 2s infinite;
-            z-index: 10;
+            z-index: 10000;
         }
         
         .demo-badge-text {
@@ -580,6 +578,538 @@
             .demo-badge {
                 font-size: 7px;
                 padding: 2px 4px;
+            }
+        }
+        
+        /* AI HERO SECTION DYNAMIC ANIMATIONS */
+        
+        /* Floating AI Elements Background */
+        .banner-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(138, 230, 207, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 71, 87, 0.05) 0%, transparent 50%);
+            z-index: 0;
+            animation: aiBackgroundPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes aiBackgroundPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        
+        /* AI Neural Network Lines */
+        .banner-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, transparent 48%, rgba(67, 97, 238, 0.1) 49%, rgba(67, 97, 238, 0.1) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(138, 230, 207, 0.1) 49%, rgba(138, 230, 207, 0.1) 51%, transparent 52%);
+            background-size: 100px 100px, 150px 150px;
+            animation: aiNetworkFlow 15s linear infinite;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        @keyframes aiNetworkFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+        
+        /* Floating AI Icons */
+        .ai-floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .ai-icon {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(67, 97, 238, 0.2);
+            animation: aiFloat 6s ease-in-out infinite;
+        }
+        
+        .ai-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .ai-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .ai-icon:nth-child(3) { top: 60%; left: 5%; animation-delay: 2s; }
+        .ai-icon:nth-child(4) { bottom: 30%; right: 10%; animation-delay: 3s; }
+        .ai-icon:nth-child(5) { bottom: 15%; left: 20%; animation-delay: 4s; }
+        
+        @keyframes aiFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+            25% { transform: translateY(-20px) rotate(90deg); opacity: 0.4; }
+            50% { transform: translateY(-10px) rotate(180deg); opacity: 0.6; }
+            75% { transform: translateY(-15px) rotate(270deg); opacity: 0.3; }
+        }
+        
+        /* Enhanced Banner Content Animations */
+        .banner_content {
+            position: relative;
+            z-index: 2;
+            animation: heroContentSlideIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        @keyframes heroContentSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        /* AI Typing Effect for Main Heading */
+        .banner_content h1 {
+            position: relative;
+            overflow: hidden;
+            border-right: 3px solid rgba(138, 230, 207, 0.8);
+            animation: aiTyping 4s steps(40, end) 0.5s forwards, aiBlinkCursor 1s infinite 4.5s;
+            white-space: nowrap;
+            width: 0;
+            max-width: 100%;
+            text-shadow: 
+                0 0 10px rgba(138, 230, 207, 0.5),
+                0 0 20px rgba(67, 97, 238, 0.3),
+                0 0 30px rgba(138, 230, 207, 0.2);
+        }
+        
+        @keyframes aiTyping {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes aiBlinkCursor {
+            0%, 50% { border-color: rgba(138, 230, 207, 0.8); }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        /* Enhanced Button Animations */
+        .banner-button {
+            animation: heroButtonsSlideUp 1s ease-out 1.5s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        @keyframes heroButtonsSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .banner-button .lets_talk {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .banner-button .lets_talk::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .banner-button .lets_talk:hover::before {
+            left: 100%;
+        }
+        
+        .banner-button .lets_talk:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* AI Genie Magical Effects */
+        .ai-genie-magic {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(138, 230, 207, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: aiGenieMagic 4s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes aiGenieMagic {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: scale(1.2) rotate(90deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(0.8) rotate(180deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: scale(1.1) rotate(270deg);
+                opacity: 0.4;
+            }
+        }
+          /* Enhanced Video Wrapper Animations */
+        .banner_wrapper {
+            position: relative;
+            z-index: 3;
+        }
+        
+        .banner-video-wrapper {
+            animation: heroVideoFloat 3s ease-in-out infinite;
+            position: relative;
+            z-index: 3;
+        }
+        
+        @keyframes heroVideoFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        
+        /* AI Voice Wave Animation */
+        .ai-voice-waves {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            z-index: 3;
+        }
+        
+        .voice-bar {
+            width: 4px;
+            background: linear-gradient(to top, #4361ee, #8ae6cf);
+            border-radius: 2px;
+            animation: voiceWave 1.5s ease-in-out infinite;
+        }
+        
+        .voice-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+        .voice-bar:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+        .voice-bar:nth-child(3) { height: 15px; animation-delay: 0.2s; }
+        .voice-bar:nth-child(4) { height: 25px; animation-delay: 0.3s; }
+        .voice-bar:nth-child(5) { height: 18px; animation-delay: 0.4s; }
+        .voice-bar:nth-child(6) { height: 12px; animation-delay: 0.5s; }
+        
+        @keyframes voiceWave {
+            0%, 100% { transform: scaleY(1); opacity: 0.3; }
+            50% { transform: scaleY(1.8); opacity: 1; }
+        }
+        
+        /* Particle System for AI Theme */
+        .ai-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(67, 97, 238, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        
+        .particle:nth-child(odd) {
+            background: rgba(138, 230, 207, 0.6);
+            animation-duration: 6s;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .banner_content h1 {
+                animation: aiTypingMobile 3s steps(30, end) 0.5s forwards;
+                font-size: 42px;
+            }
+            
+            .ai-floating-icons {
+                display: none;
+            }
+            
+            .ai-particles {
+                display: none;
+            }
+        }
+        
+        @keyframes aiTypingMobile {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+        @media (max-width: 767px) {
+            .banner_content h1 {
+                white-space: normal;
+                border-right: none;
+                animation: heroContentSlideIn 1s ease-out forwards;
+                width: auto;
+            }
+            
+            .ai-voice-waves {
+                display: none;
+            }
+            
+            .banner-video-wrapper {
+                animation: none;
+            }
+        }
+        
+        /* Hover Effects for Interactive Elements */
+        .banner_content:hover .ai-genie-magic {
+            animation-duration: 2s;
+        }
+        
+        .banner-video-wrapper:hover {
+            animation-play-state: paused;
+            transform: translateY(-5px) scale(1.02);
+        }
+        
+        /* Additional AI-themed effects */
+        
+        /* Circuit Board Pattern Overlay */
+        .ai-circuit-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 98%, rgba(67, 97, 238, 0.1) 100%),
+                linear-gradient(0deg, transparent 98%, rgba(138, 230, 207, 0.1) 100%);
+            background-size: 50px 50px, 50px 50px;
+            z-index: 0;
+            opacity: 0.3;
+            animation: circuitFlow 20s linear infinite;
+        }
+        
+        @keyframes circuitFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* AI Data Stream Effect */
+        .ai-data-stream {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(to bottom, transparent, #4361ee, transparent);
+            animation: dataStream 3s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        .ai-data-stream:nth-child(even) {
+            background: linear-gradient(to bottom, transparent, #8ae6cf, transparent);
+            animation-delay: 1.5s;
+            right: 10px;
+        }
+        
+        @keyframes dataStream {
+            0% { height: 0; top: 0; opacity: 0; }
+            10% { height: 100px; opacity: 1; }
+            90% { height: 100px; opacity: 1; }
+            100% { height: 0; top: 100%; opacity: 0; }
+        }
+        
+        /* Holographic Text Effect */
+        .banner_content h1 {
+            text-shadow: 
+                0 0 10px rgba(138, 230, 207, 0.5),
+                0 0 20px rgba(67, 97, 238, 0.3),
+                0 0 30px rgba(138, 230, 207, 0.2);
+        }
+        
+        /* AI Pulse Ring Effect */
+        .ai-pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(67, 97, 238, 0.3);
+            border-radius: 50%;
+            animation: aiPulseRing 4s ease-out infinite;
+            z-index: 1;
+        }
+        
+        .ai-pulse-ring:nth-child(2) {
+            animation-delay: 1s;
+            border-color: rgba(138, 230, 207, 0.3);
+        }
+        
+        .ai-pulse-ring:nth-child(3) {
+            animation-delay: 2s;
+            border-color: rgba(255, 71, 87, 0.2);
+        }
+        
+        @keyframes aiPulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Loading Bar Animation for AI Processing */
+        .ai-loading-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 150px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .ai-loading-progress {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #4361ee, #8ae6cf, #4361ee);
+            border-radius: 2px;
+            animation: aiProcessing 3s ease-in-out infinite;
+        }
+        
+        @keyframes aiProcessing {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+        
+        /* Digital Rain Effect (Matrix Style) */
+        .digital-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.1;
+        }
+        
+        .rain-drop {
+            position: absolute;
+            color: #4361ee;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            animation: rainFall 8s linear infinite;
+        }
+        
+        @keyframes rainFall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .ai-circuit-overlay,
+            .digital-rain,
+            .ai-data-stream,
+            .ai-loading-bar {
+                display: none;
+            }
+            
+            .banner_content h1 {
+                text-shadow: 
+                    0 0 5px rgba(138, 230, 207, 0.3),
+                    0 0 10px rgba(67, 97, 238, 0.2);
+            }
+        }
+        
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .banner-section::before,
+            .banner-section::after,
+            .ai-floating-icons,
+            .ai-particles,
+            .banner-video-wrapper,
+            .ai-voice-waves,
+            .ai-genie-magic,
+            .ai-circuit-overlay,
+            .ai-data-stream,
+            .ai-pulse-ring,
+            .digital-rain {
+                animation: none !important;
+            }
+            
+            .banner_content h1 {
+                animation: none !important;
+                border-right: none !important;
+                width: auto !important;
             }
         }
     </style>
@@ -634,16 +1164,73 @@
     </figure>
 <!-- Banner -->
 <section class="banner-section">
+    <!-- AI Circuit Board Overlay -->
+    <div class="ai-circuit-overlay"></div>
+    
+    <!-- Digital Rain Effect -->
+    <div class="digital-rain">
+        <div class="rain-drop" style="left: 10%; animation-delay: 0s;">01</div>
+        <div class="rain-drop" style="left: 20%; animation-delay: 1s;">AI</div>
+        <div class="rain-drop" style="left: 30%; animation-delay: 2s;">11</div>
+        <div class="rain-drop" style="left: 40%; animation-delay: 3s;">CALL</div>
+        <div class="rain-drop" style="left: 50%; animation-delay: 4s;">10</div>
+        <div class="rain-drop" style="left: 60%; animation-delay: 5s;">VOICE</div>
+        <div class="rain-drop" style="left: 70%; animation-delay: 6s;">01</div>
+        <div class="rain-drop" style="left: 80%; animation-delay: 7s;">BOT</div>
+        <div class="rain-drop" style="left: 90%; animation-delay: 8s;">11</div>
+    </div>
+    
+    <!-- AI Data Streams -->
+    <div class="ai-data-stream"></div>
+    <div class="ai-data-stream"></div>
+    <div class="ai-data-stream" style="right: 20px; animation-delay: 3s;"></div>
+    
+    <!-- AI Floating Icons -->
+    <div class="ai-floating-icons">
+        <i class="ai-icon fas fa-robot"></i>
+        <i class="ai-icon fas fa-microphone"></i>
+        <i class="ai-icon fas fa-phone-alt"></i>
+        <i class="ai-icon fas fa-brain"></i>
+        <i class="ai-icon fas fa-magic"></i>
+    </div>
+    
+    <!-- AI Particles System -->
+    <div class="ai-particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+    
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-12 col-12">                <div class="banner_content">
-                    <h1 class="text-white">Transform Business Communications with Bolgini AI</h1>
-                    <p class="text-white">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    <div class="banner-button">
+            <div class="col-lg-7 col-md-12 col-sm-12 col-12">                
+                <div class="banner_content">
+                    <div class="ai-genie-magic"></div>
+                    <!-- AI Pulse Rings -->
+                    <div class="ai-pulse-ring"></div>
+                    <div class="ai-pulse-ring"></div>
+                    <div class="ai-pulse-ring"></div>
+                    
+                    <h1 class="text-white">Transform Business Communications with BolGini AI Voice Agent</h1>
+                    <p class="text-white">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    
+                    <div class="banner-button">
                         <a class="button1 lets_talk text-decoration-none" href="./demo.html">Live Demo<i class="circle fa-regular fa-angle-right"></i></a>
                         <a class="lets_talk text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">🔥 Request Trial Account<i class="circle fa-regular fa-angle-right"></i></a>   
                     </div>
+                    
+                    <!-- AI Loading Bar -->
+                    <div class="ai-loading-bar">
+                        <div class="ai-loading-progress"></div>
+                    </div>
                 </div>
-            </div>            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+            </div>            
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
                 <div class="banner_wrapper" data-aos="fade-right">
                     <div class="banner-video-wrapper">
                         <div class="banner-video-container">
@@ -653,6 +1240,15 @@
                                 allowfullscreen
                                 loading="lazy">
                             </iframe>
+                        </div>
+                        <!-- AI Voice Wave Animation -->
+                        <div class="ai-voice-waves">
+                            <div class="voice-bar"></div>
+                            <div class="voice-bar"></div>
+                            <div class="voice-bar"></div>
+                            <div class="voice-bar"></div>
+                            <div class="voice-bar"></div>
+                            <div class="voice-bar"></div>
                         </div>
                     </div> 
                 </div>
@@ -1232,6 +1828,164 @@ $(document).ready(function() {
     $('.banner-video-wrapper').on('load', function() {
         $(this).addClass('loaded');
     });
+    
+    // AI HERO SECTION ENHANCEMENTS
+    
+    // Initialize AI particles with random properties
+    function initAIParticles() {
+        $('.particle').each(function(index) {
+            var randomLeft = Math.random() * 100;
+            var randomDelay = Math.random() * 8;
+            var randomSize = Math.random() * 3 + 1;
+            
+            $(this).css({
+                'left': randomLeft + '%',
+                'animation-delay': randomDelay + 's',
+                'width': randomSize + 'px',
+                'height': randomSize + 'px'
+            });
+        });
+    }
+    
+    // Initialize AI floating icons with random positions
+    function initFloatingIcons() {
+        $('.ai-icon').each(function() {
+            var randomTop = Math.random() * 80 + 10;
+            var randomLeft = Math.random() * 80 + 10;
+            var randomDelay = Math.random() * 6;
+            
+            $(this).css({
+                'animation-delay': randomDelay + 's'
+            });
+        });
+    }
+    
+    // AI Voice Wave Interactive Effects
+    function startVoiceWaveInteraction() {
+        $('.banner-video-wrapper').hover(
+            function() {
+                $('.voice-bar').css('animation-duration', '0.8s');
+            },
+            function() {
+                $('.voice-bar').css('animation-duration', '1.5s');
+            }
+        );
+    }
+    
+    // Enhanced typing effect with sound simulation
+    function enhanceTypingEffect() {
+        let text = $('.banner_content h1').text();
+        $('.banner_content h1').text('');
+        $('.banner_content h1').css({
+            'width': 'auto',
+            'white-space': 'normal',
+            'border-right': '3px solid rgba(138, 230, 207, 0.8)'
+        });
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                $('.banner_content h1').text(text.slice(0, i + 1));
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Start cursor blinking after typing is complete
+                setTimeout(() => {
+                    $('.banner_content h1').css('border-right', 'none');
+                }, 2000);
+            }
+        }
+        
+        // Start typing after a delay
+        setTimeout(typeWriter, 500);
+    }
+    
+    // AI Genie Magic Effects on Interaction
+    function addGenieInteractions() {
+        $('.banner_content').hover(
+            function() {
+                $('.ai-genie-magic').css({
+                    'animation-duration': '2s',
+                    'opacity': '0.8',
+                    'transform': 'scale(1.2)'
+                });
+            },
+            function() {
+                $('.ai-genie-magic').css({
+                    'animation-duration': '4s',
+                    'opacity': '0.3',
+                    'transform': 'scale(1)'
+                });
+            }
+        );
+    }
+    
+    // Add more particles dynamically
+    function addDynamicParticles() {
+        setInterval(function() {
+            if ($('.particle').length < 15) {
+                var newParticle = $('<div class="particle"></div>');
+                var randomLeft = Math.random() * 100;
+                var randomColor = Math.random() > 0.5 ? 'rgba(67, 97, 238, 0.6)' : 'rgba(138, 230, 207, 0.6)';
+                
+                newParticle.css({
+                    'left': randomLeft + '%',
+                    'background': randomColor,
+                    'animation-delay': '0s'
+                });
+                
+                $('.ai-particles').append(newParticle);
+                
+                // Remove particle after animation
+                setTimeout(function() {
+                    newParticle.remove();
+                }, 8000);
+            }
+        }, 2000);
+    }
+    
+    // Initialize all AI effects
+    initAIParticles();
+    initFloatingIcons();
+    startVoiceWaveInteraction();
+    addGenieInteractions();
+    
+    // Start dynamic effects only on desktop
+    if ($(window).width() > 991) {
+        enhanceTypingEffect();
+        addDynamicParticles();
+    }
+    
+    // Enhanced button interactions
+    $('.banner-button .lets_talk').hover(
+        function() {
+            $(this).find('.circle').css({
+                'transform': 'rotate(360deg) scale(1.2)',
+                'transition': 'all 0.4s ease'
+            });
+        },
+        function() {
+            $(this).find('.circle').css({
+                'transform': 'rotate(0deg) scale(1)',
+                'transition': 'all 0.4s ease'
+            });
+        }
+    );
+    
+    // Add AI sound effect simulation (visual only)
+    function simulateAISounds() {
+        setInterval(function() {
+            $('.ai-voice-waves .voice-bar').each(function(index) {
+                var randomHeight = Math.random() * 20 + 10;
+                $(this).css({
+                    'height': randomHeight + 'px',
+                    'transition': 'height 0.3s ease'
+                });
+            });
+        }, 1500);
+    }
+    
+    simulateAISounds();
       // Floating demo trigger functionality
     $('#floating-demo-trigger').on('click', function(e) {
         e.preventDefault();
