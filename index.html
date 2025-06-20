@@ -172,13 +172,20 @@
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <!-- Custom styles for video section -->
-    <style>
+    <style>        /* Hero Media Container Styles */
+        .hero-media-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
         /* Banner video styles */
         .banner-video-wrapper {
             position: relative;
             width: 100%;
             height: 100%;
-            min-height: 400px;
+            min-height: 500px;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -211,14 +218,113 @@
             width: 100%;
             height: 0;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        }        .banner-video-container iframe {
+        }
+        
+        .banner-video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            z-index: 2;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+          .banner-video-container iframe.video-revealed {
+            opacity: 1;
+        }
+        
+        /* Video reveal transition styles */
+        .hero-media-container.video-revealed {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+          .hero-media-container:hover {
+            transform: scale(1.01);
+        }
+        
+        /* Fallback image styles */
+        .fallback-image {
+            border-radius: 15px;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        /* Loading state for hero video */
+        .hero-media-container.loading::before {
+            content: "Loading AI Demo...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            z-index: 15;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Hero Text Overlay Styles */
+        .hero-text-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.95) 0%, rgba(55, 48, 163, 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            z-index: 10;
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hero-text-overlay.overlay-hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
+          .hero-main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border-right: 3px solid rgba(138, 230, 207, 0.8);
+            white-space: nowrap;
+            width: 0;
+            animation: heroTitleTyping 6s steps(80, end) 0.5s forwards, heroCursorBlink 1s infinite 6.5s;
+            max-width: 100%;
+        }
+        
+        @keyframes heroTitleTyping {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes heroCursorBlink {
+            0%, 50% { border-color: rgba(138, 230, 207, 0.8); }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        /* Hero Content Below Video */
+        .hero-content-below {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }.banner_wrapper {
             position: relative;
             z-index: 2;
@@ -706,29 +812,76 @@
             0%, 50% { border-color: rgba(138, 230, 207, 0.8); }
             51%, 100% { border-color: transparent; }
         }
-        
-        /* Enhanced Button Animations */
+          /* Enhanced Button Animations */
         .banner-button {
-            animation: heroButtonsSlideUp 1s ease-out 1.5s forwards;
-            opacity: 0;
-            transform: translateY(30px);
+            margin-top: 30px;
         }
         
-        @keyframes heroButtonsSlideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .banner-button .lets_talk {
+        .banner-button .button1,
+        .banner-button .button2 {
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+            padding: 6px 2px 6px 42px; 
+            text-align: center;
+            display: inline-block;
+            border-radius: 30px 30px 30px 0;
+            color: var(--e-global-color-white) !important;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background-image: linear-gradient(to right, var(--e-gradient-1) 0%, var(--e-gradient-2) 100%);
             position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin-right: 15px;
+        }
+        
+        .banner-button .button2 {
+            background-image: linear-gradient(to right, #ff6b6b 0%, #ff8e8e 100%);
+        }
+        
+        .banner-button .button1:hover,
+        .banner-button .button2:hover {
+            color: var(--e-global-color-white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
+        }
+        
+        .banner-button .button1:hover {
+            background-image: linear-gradient(to right, #052b45 0%, #052b45 51%, #052b45 100%);
+        }
+        
+        .banner-button .button2:hover {
+            background-image: linear-gradient(to right, #e55555 0%, #ff4444 100%);
+        }
+        
+        .banner-button .circle {
+            background: var(--e-global-color-white);
+            border-radius: 100px;
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 3px 0 12px;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .banner-button .circle:before {
+            font-size: 18px;
+            padding-top: 2px;
+            font-family: 'FontAwesome';
+            transition: all 0.3s ease;
+            color: var(--e-global-color-dark-blue);
+        }
+        
+        .banner-button .button1:hover .circle,
+        .banner-button .button2:hover .circle {
+            background-color: var(--e-global-color-very-dark-blue);
+        }
+        
+        .banner-button .button1:hover .circle:before,
+        .banner-button .button2:hover .circle:before {
+            color: var(--e-global-color-white);
         }
         
         .banner-button .lets_talk::before {
@@ -750,18 +903,17 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
         }
-        
-        /* AI Genie Magical Effects */
+          /* AI Genie Magical Effects */
         .ai-genie-magic {
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 100px;
-            height: 100px;
+            top: -30px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
             background: radial-gradient(circle, rgba(138, 230, 207, 0.3) 0%, transparent 70%);
             border-radius: 50%;
             animation: aiGenieMagic 4s ease-in-out infinite;
-            z-index: 1;
+            z-index: 11;
         }
         
         @keyframes aiGenieMagic {
@@ -798,16 +950,16 @@
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-10px) rotate(1deg); }
         }
-        
-        /* AI Voice Wave Animation */
+          /* AI Voice Wave Animation */
         .ai-voice-waves {
             position: absolute;
-            bottom: -20px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 4px;
-            z-index: 3;
+            z-index: 4;
+            opacity: 0.8;
         }
         
         .voice-bar {
@@ -974,19 +1126,18 @@
                 0 0 20px rgba(67, 97, 238, 0.3),
                 0 0 30px rgba(138, 230, 207, 0.2);
         }
-        
-        /* AI Pulse Ring Effect */
+          /* AI Pulse Ring Effect */
         .ai-pulse-ring {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border: 2px solid rgba(67, 97, 238, 0.3);
             border-radius: 50%;
             animation: aiPulseRing 4s ease-out infinite;
-            z-index: 1;
+            z-index: 11;
         }
         
         .ai-pulse-ring:nth-child(2) {
@@ -1013,14 +1164,15 @@
         /* Loading Bar Animation for AI Processing */
         .ai-loading-bar {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            width: 150px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
             overflow: hidden;
-            z-index: 2;
+            z-index: 12;
         }
         
         .ai-loading-progress {
@@ -1073,8 +1225,7 @@
                 opacity: 0;
             }
         }
-        
-        /* Enhanced Mobile Responsiveness */
+          /* Enhanced Mobile Responsiveness */
         @media (max-width: 768px) {
             .ai-circuit-overlay,
             .digital-rain,
@@ -1088,9 +1239,63 @@
                     0 0 5px rgba(138, 230, 207, 0.3),
                     0 0 10px rgba(67, 97, 238, 0.2);
             }
+              .hero-main-title {
+                font-size: 1.8rem;
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                width: auto;
+                line-height: 1.3;
+            }
+            
+            .hero-media-container {
+                margin-bottom: 30px;
+            }
+            
+            .hero-content-below {
+                margin-top: 20px;
+            }
+              .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .banner-button .button1,
+            .banner-button .button2 {
+                font-size: 14px;
+                line-height: 18px;
+                padding: 6px 2px 6px 24px;
+                margin-bottom: 10px;
+                margin-right: 8px;
+            }
+            
+            .banner-button .circle {
+                height: 35px;
+                width: 35px;
+                line-height: 35px;
+                margin: 0 3px 0 8px;
+            }
+            
+            .banner-button .circle:before {
+                font-size: 14px;
+                padding-top: 0;
+            }
         }
         
-        /* Accessibility Improvements */
+        @media (max-width: 992px) {
+            .hero-main-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .ai-floating-icons {
+                display: none;
+            }
+        }
+          /* Accessibility Improvements */
         @media (prefers-reduced-motion: reduce) {
             .banner-section::before,
             .banner-section::after,
@@ -1111,6 +1316,32 @@
                 border-right: none !important;
                 width: auto !important;
             }
+            
+            .hero-main-title {
+                animation: none !important;
+                border-right: none !important;
+                width: auto !important;
+            }
+        }
+        
+        /* Fallback image styles */
+        .fallback-image {
+            border-radius: 15px;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        /* Loading state for hero video */
+        .hero-media-container.loading::before {
+            content: "Loading AI Demo...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            z-index: 15;
+            animation: pulse 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -1206,51 +1437,64 @@
         <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
         <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
     </div>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-7 col-md-12 col-sm-12 col-12">                
-                <div class="banner_content">
-                    <div class="ai-genie-magic"></div>
-                    <!-- AI Pulse Rings -->
-                    <div class="ai-pulse-ring"></div>
-                    <div class="ai-pulse-ring"></div>
-                    <div class="ai-pulse-ring"></div>
-                    
-                    <h1 class="text-white">Transform Business Communications with BolGini AI Voice Agent</h1>
-                    <p class="text-white">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    
-                    <div class="banner-button">
-                        <a class="button1 lets_talk text-decoration-none" href="./demo.html">Live Demo<i class="circle fa-regular fa-angle-right"></i></a>
-                        <a class="lets_talk text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">🔥 Request Trial Account<i class="circle fa-regular fa-angle-right"></i></a>   
-                    </div>
-                    
-                    <!-- AI Loading Bar -->
-                    <div class="ai-loading-bar">
-                        <div class="ai-loading-progress"></div>
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12 col-12">                
+                <!-- Merged Video + Text Overlay Container -->
+                <div class="hero-media-container" data-aos="fade-up">
+                    <div class="banner_wrapper">
+                        <div class="banner-video-wrapper">
+                            <div class="banner-video-container">                                <iframe 
+                                    id="hero-video"
+                                    src="https://www.youtube-nocookie.com/embed/g6tTxpEMPiA?rel=0&modestbranding=1&showinfo=0&fs=0&cc_load_policy=0&iv_load_policy=3&autohide=1&controls=0&enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=g6tTxpEMPiA"
+                                    title="Bolgini AI Calling Agent Demo"
+                                    allow="autoplay; encrypted-media"
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                                
+                                <!-- Text Overlay (shows initially, fades out after animation) -->
+                                <div class="hero-text-overlay">
+                                    <div class="ai-genie-magic"></div>
+                                    <!-- AI Pulse Rings -->
+                                    <div class="ai-pulse-ring"></div>
+                                    <div class="ai-pulse-ring"></div>
+                                    <div class="ai-pulse-ring"></div>
+                                    
+                                    <h1 class="text-white hero-main-title">Transform Business Communications with BolGini AI Voice Agent</h1>
+                                    
+                                    <!-- AI Loading Bar -->
+                                    <div class="ai-loading-bar">
+                                        <div class="ai-loading-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- AI Voice Wave Animation -->
+                            <div class="ai-voice-waves">
+                                <div class="voice-bar"></div>
+                                <div class="voice-bar"></div>
+                                <div class="voice-bar"></div>
+                                <div class="voice-bar"></div>
+                                <div class="voice-bar"></div>
+                                <div class="voice-bar"></div>
+                            </div>
+                        </div> 
                     </div>
                 </div>
-            </div>            
-            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
-                <div class="banner_wrapper" data-aos="fade-right">
-                    <div class="banner-video-wrapper">
-                        <div class="banner-video-container">
-                            <iframe 
-                                src="https://www.youtube-nocookie.com/embed/WEBcKHAT8fo?rel=0&modestbranding=1&showinfo=0&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0&controls=1&enablejsapi=0"
-                                title="Bolgini AI Calling Agent Demo"
-                                allowfullscreen
-                                loading="lazy">
-                            </iframe>
-                        </div>
-                        <!-- AI Voice Wave Animation -->
-                        <div class="ai-voice-waves">
-                            <div class="voice-bar"></div>
-                            <div class="voice-bar"></div>
-                            <div class="voice-bar"></div>
-                            <div class="voice-bar"></div>
-                            <div class="voice-bar"></div>
-                            <div class="voice-bar"></div>
-                        </div>
-                    </div> 
+                  <!-- Subtitle and CTA Buttons (below video/overlay) -->
+                <div class="hero-content-below" data-aos="fade-up" data-aos-delay="400">
+                    <p class="text-white text-center hero-subtitle">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    
+                    <div class="banner-button text-center">
+                        <a class="button1 text-decoration-none" href="./demo.html">
+                            <span>Live Demo</span>
+                            <i class="circle fa-regular fa-angle-right"></i>
+                        </a>
+                        <a class="button2 text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">
+                            <span>🔥 Request Trial Account</span>
+                            <i class="circle fa-regular fa-angle-right"></i>
+                        </a>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -1871,47 +2115,24 @@ $(document).ready(function() {
             }
         );
     }
-    
-    // Enhanced typing effect with sound simulation
+      // Enhanced typing effect with sound simulation
     function enhanceTypingEffect() {
-        let text = $('.banner_content h1').text();
-        $('.banner_content h1').text('');
-        $('.banner_content h1').css({
-            'width': 'auto',
-            'white-space': 'normal',
-            'border-right': '3px solid rgba(138, 230, 207, 0.8)'
-        });
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                $('.banner_content h1').text(text.slice(0, i + 1));
-                i++;
-                setTimeout(typeWriter, 100);
-            } else {
-                // Start cursor blinking after typing is complete
-                setTimeout(() => {
-                    $('.banner_content h1').css('border-right', 'none');
-                }, 2000);
-            }
-        }
-        
-        // Start typing after a delay
-        setTimeout(typeWriter, 500);
+        // This is now handled by CSS animations in the hero-main-title class
+        // The typing effect is built into the CSS for better performance
+        console.log('Hero typing effect initialized via CSS animations');
     }
-    
-    // AI Genie Magic Effects on Interaction
+      // AI Genie Magic Effects on Interaction
     function addGenieInteractions() {
-        $('.banner_content').hover(
+        $('.hero-text-overlay').hover(
             function() {
-                $('.ai-genie-magic').css({
+                $(this).find('.ai-genie-magic').css({
                     'animation-duration': '2s',
                     'opacity': '0.8',
                     'transform': 'scale(1.2)'
                 });
             },
             function() {
-                $('.ai-genie-magic').css({
+                $(this).find('.ai-genie-magic').css({
                     'animation-duration': '4s',
                     'opacity': '0.3',
                     'transform': 'scale(1)'
@@ -1943,12 +2164,47 @@ $(document).ready(function() {
             }
         }, 2000);
     }
-    
-    // Initialize all AI effects
+      // Initialize all AI effects
     initAIParticles();
     initFloatingIcons();
     startVoiceWaveInteraction();
     addGenieInteractions();
+      // Hero Video + Text Overlay Sequence
+    function initHeroSequence() {
+        const textOverlay = $('.hero-text-overlay');
+        const videoIframe = $('#hero-video');
+        
+        if (textOverlay.length && videoIframe.length) {
+            // Start text animation immediately
+            setTimeout(function() {
+                // After text typing animation completes (6s + 1.5s pause)
+                setTimeout(function() {
+                    // Hide text overlay with smooth transition
+                    textOverlay.addClass('overlay-hidden');
+                    
+                    // Reveal video with fade-in
+                    setTimeout(function() {
+                        videoIframe.addClass('video-revealed');
+                    }, 700);
+                    
+                }, 8000); // 6s typing + 1.5s pause + 0.5s extra buffer
+            }, 100);
+        }
+    }
+    
+    // Enhanced video error handling for hero video
+    $('#hero-video').on('load', function() {
+        console.log('Hero video iframe loaded');
+    }).on('error', function() {
+        console.log('Hero video loading error detected');
+        // Fallback: show static image
+        $(this).parent().append('<img src="./assets/images/banner-image.png" alt="Bolgini AI Demo" class="fallback-image" style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; z-index:0;">');
+    });
+      // Initialize hero sequence
+    initHeroSequence();
+    
+    // Initialize AI sound simulation
+    simulateAISounds();
     
     // Start dynamic effects only on desktop
     if ($(window).width() > 991) {
@@ -1971,18 +2227,24 @@ $(document).ready(function() {
             });
         }
     );
-    
-    // Add AI sound effect simulation (visual only)
+      // Add AI sound effect simulation (visual only)
     function simulateAISounds() {
         setInterval(function() {
             $('.ai-voice-waves .voice-bar').each(function(index) {
-                var randomHeight = Math.random() * 20 + 10;
-                $(this).css({
-                    'height': randomHeight + 'px',
-                    'transition': 'height 0.3s ease'
+                var randomHeight = Math.random() * 25 + 10;
+                var originalHeight = $(this).css('height');
+                
+                $(this).animate({
+                    'height': randomHeight + 'px'
+                }, 300).animate({
+                    'height': originalHeight
+                }, 300);
+                  $(this).css({
+                    'opacity': Math.random() * 0.5 + 0.5,
+                    'animation-duration': (Math.random() * 1 + 0.8) + 's'
                 });
             });
-        }, 1500);
+        }, 2000);
     }
     
     simulateAISounds();
