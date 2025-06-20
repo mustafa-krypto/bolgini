@@ -53,8 +53,158 @@
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <style>
+        /* AI Genie Hero Animations */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(1deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+            75% { transform: translateY(-15px) rotate(0.5deg); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.6), 0 0 60px rgba(118, 75, 162, 0.4); }
+        }
+
+        @keyframes text-shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.7; }
+            33% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 1; }
+            66% { transform: translateY(-10px) translateX(-5px) scale(0.9); opacity: 0.8; }
+        }
+
+        @keyframes voice-wave {
+            0%, 100% { transform: scaleY(1); }
+            25% { transform: scaleY(1.8); }
+            50% { transform: scaleY(1.2); }
+            75% { transform: scaleY(2.1); }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Enhanced Banner Section */
+        .banner-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #4361ee, #3730a3);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            animation: particle-float 6s ease-in-out infinite;
+        }
+
+        .banner_content h1 {
+            background: linear-gradient(45deg, #ffffff, #e3f2fd, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer 3s linear infinite;
+            position: relative;
+        }
+
+        .banner_content h1::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            border-radius: 10px;
+            z-index: -1;
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        .sub-bannerimage {
+            animation: floating 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(102, 126, 234, 0.3));
+        }
+
+        /* Voice Wave Animation for AI Theme */
+        .banner_content::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(to top, #667eea, #764ba2);
+            border-radius: 2px;
+            animation: voice-wave 1s ease-in-out infinite;
+            transform: translateY(-50%);
+        }
+
+        .banner_content::after {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            width: 3px;
+            height: 25px;
+            background: linear-gradient(to top, #4361ee, #3730a3);
+            border-radius: 2px;
+            animation: voice-wave 1s ease-in-out infinite 0.2s;
+            transform: translateY(-50%);
+        }
+
+        /* Floating Particles */
+        .banner-section .container::before,
+        .banner-section .container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: particle-float 4s ease-in-out infinite;
+        }
+
+        .banner-section .container::before {
+            top: 20%;
+            right: 20%;
+            animation-delay: -1s;
+        }
+
+        .banner-section .container::after {
+            top: 60%;
+            right: 30%;
+            animation-delay: -2s;
+        }
+
+        /* AI Genie Icon Animation */
+        .banner_wrapper {
+            position: relative;
+        }
+
+        .banner_wrapper::before {
+            content: '🧞‍♂️';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 2rem;
+            animation: floating 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+        }
+
         .demo-section {
             padding: 80px 0;
         }
@@ -65,9 +215,27 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             margin-bottom: 30px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .demo-card:hover::before {
+            left: 100%;
+        }
+
         .demo-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         .demo-type {
@@ -113,12 +281,45 @@
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
             color: white;
             text-decoration: none;
-        }
-        .interactive-demo {
+        }        .interactive-demo {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 60px 0;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* AI Constellation Background */
+        .interactive-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.3), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: particle-float 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        /* Floating Genie Elements */
+        .interactive-demo::after {
+            content: '🧞‍♂️ ✨ 🌟 💫';
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            right: 5%;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: floating 8s ease-in-out infinite;
+        }
+
         .phone-mockup {
             background: #333;
             border-radius: 30px;
@@ -126,9 +327,27 @@
             margin: 0 auto;
             max-width: 300px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            animation: floating 4s ease-in-out infinite;
         }
+
+        /* Phone Glow Effect */
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #4361ee, #3730a3);
+            border-radius: 35px;
+            z-index: -1;
+            animation: gradient-shift 3s ease infinite;
+            opacity: 0.7;
+        }
+
         .screen {
-            background: #000;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
             border-radius: 20px;
             padding: 30px 20px;
             text-align: center;
@@ -136,25 +355,88 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Screen Matrix Effect */
+        .screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(102, 126, 234, 0.1) 50%, 
+                transparent 100%
+            );
+            animation: text-shimmer 4s linear infinite;
+        }
+
         .call-status {
             font-size: 18px;
             margin-bottom: 20px;
+            position: relative;
         }
+
+        /* Typing Indicator Animation */
+        .call-status::after {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #667eea;
+            margin-left: 5px;
+            animation: voice-wave 1s ease-in-out infinite;
+        }
+
         .call-avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 40px;
+            position: relative;
+            animation: glow-pulse 2s ease-in-out infinite;
         }
+
+        /* AI Brain Waves */
+        .call-avatar::before,
+        .call-avatar::after {
+            content: '';
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .call-avatar::before {
+            width: 120px;
+            height: 120px;
+            top: -10px;
+            left: -10px;
+            animation-delay: 0.5s;
+        }
+
+        .call-avatar::after {
+            width: 140px;
+            height: 140px;
+            top: -20px;
+            left: -20px;
+            animation-delay: 1s;
+        }
+
         .call-actions {
             margin-top: 30px;
+            position: relative;
         }
+
         .call-button {
             width: 60px;
             height: 60px;
@@ -164,17 +446,42 @@
             cursor: pointer;
             font-size: 20px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        .call-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .call-button:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
         .call-green {
-            background: #28a745;
+            background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
+            animation: glow-pulse 2s ease-in-out infinite;
         }
+
         .call-red {
-            background: #dc3545;
+            background: linear-gradient(135deg, #dc3545, #e83e8c);
             color: white;
         }
+
         .call-button:hover {
             transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         .transcript-section {
             background: #f8f9fa;
@@ -228,8 +535,7 @@
             font-size: 16px;
             color: #666;
         }
-        
-        /* Test Our AI Agent LIVE Section Styles */
+          /* Test Our AI Agent LIVE Section Styles */
         .test-demo-hero {
             background: linear-gradient(135deg, #4361ee 0%, #3730a3 100%);
             padding: 60px 0 40px;
@@ -247,6 +553,18 @@
             background: rgba(255, 255, 255, 0.1);
             transform: rotate(15deg);
             z-index: 1;
+            animation: gradient-shift 10s ease infinite;
+        }
+
+        /* Magic Sparkles Animation */
+        .test-demo-hero::after {
+            content: '✨';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            font-size: 1.5rem;
+            animation: particle-float 3s ease-in-out infinite;
+            z-index: 1;
         }
         
         .test-demo-hero .container {
@@ -263,6 +581,34 @@
             padding: 25px 35px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .phone-number-banner::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #4361ee, #3730a3);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.7;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        /* Genie Lamp Animation */
+        .phone-number-banner::after {
+            content: '🪔';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+            animation: floating 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
         }
         
         .hero-text-content h1 {
@@ -270,6 +616,25 @@
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 15px;
+            position: relative;
+        }
+
+        /* Fire Animation for the Fire Emoji */
+        .hero-text-content h1::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, 
+                rgba(255, 69, 0, 0.3), 
+                rgba(255, 140, 0, 0.2), 
+                rgba(255, 215, 0, 0.1)
+            );
+            border-radius: 10px;
+            z-index: -1;
+            animation: glow-pulse 1.5s ease-in-out infinite;
         }
         
         .call-instruction {
@@ -280,9 +645,31 @@
         
         .demo-phone-section {
             text-align: center;
+            position: relative;
         }
-        
-        .demo-phone-number {
+
+        /* Voice Wave Animation Around Phone Number */
+        .demo-phone-section::before,
+        .demo-phone-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to top, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+            border-radius: 2px;
+            animation: voice-wave 1.2s ease-in-out infinite;
+        }
+
+        .demo-phone-section::before {
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .demo-phone-section::after {
+            right: 10px;
+            animation-delay: 0.3s;
+        }        .demo-phone-number {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             font-size: 1.8rem;
@@ -294,16 +681,58 @@
             letter-spacing: 2px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-phone-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: text-shimmer 2s linear infinite;
+        }
+
+        /* Phone Icon Pulse */
+        .demo-phone-number i {
+            animation: glow-pulse 2s ease-in-out infinite;
+            display: inline-block;
+            margin-right: 10px;
         }
         
         .demo-phone-number:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
         
         .phone-features {
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
+            position: relative;
+        }
+
+        /* Magic Sparkle Effects */
+        .phone-features::before {
+            content: '⭐';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: particle-float 2s ease-in-out infinite;
+        }
+
+        .phone-features::after {
+            content: '⭐';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: particle-float 2s ease-in-out infinite;
+            animation-delay: 1s;
         }
         
         @media (max-width: 768px) {
@@ -321,6 +750,138 @@
                 font-size: 1.6rem;
                 padding: 15px 20px;
             }
+
+            /* Enhanced Mobile Responsiveness */
+            .banner_content h1 {
+                font-size: 2.5rem;
+            }
+
+            .banner_content::before,
+            .banner_content::after {
+                display: none;
+            }
+
+            .demo-phone-section::before,
+            .demo-phone-section::after {
+                display: none;
+            }
+
+            .phone-features::before,
+            .phone-features::after {
+                display: none;
+            }
+
+            .test-demo-hero::after {
+                display: none;
+            }
+
+            .interactive-demo::after {
+                font-size: 1rem;
+            }
+
+            .banner_wrapper::before {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Additional Mobile Responsiveness for Phone Number */
+        @media (max-width: 768px) {
+            .demo-phone-number {
+                font-size: 1.4rem !important;
+                padding: 12px 18px !important;
+                letter-spacing: 1px !important;
+                min-width: max-content;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .demo-phone-number {
+                font-size: 1.2rem !important;
+                padding: 10px 15px !important;
+                letter-spacing: 0.5px !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .demo-phone-number {
+                font-size: 1.1rem !important;
+                padding: 8px 12px !important;
+                letter-spacing: 0px !important;
+            }
+        }        /* Phone number section styling */
+        .demo-phone-section {
+            padding: 0 10px;
+        }
+
+        @media (max-width: 320px) {
+            .demo-phone-number {
+                font-size: 1rem !important;
+                padding: 6px 10px !important;
+                letter-spacing: 0px !important;
+            }
+        }
+
+        /* Enhanced Stats Cards with Glassmorphism */
+        .stats-grid .stat-card {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-grid .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stats-grid .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stats-grid .stat-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .stats-grid .stat-number {
+            color: #ffffff !important;
+            text-shadow: 0 0 20px rgba(255,255,255,0.5);
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        
+        .stats-grid .stat-label {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* Enhanced Demo Button Effects */
+        .demo-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover::before {
+            width: 300px;
+            height: 300px;
         }
     </style>
 </head>
@@ -379,11 +940,7 @@
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12 col-12">
                     <div class="banner_content" data-aos="fade-right">
-                        <h1 class="text-white">Live Demo</h1>
-                        <p class="text-white">Experience Bolgini's AI calling agent in action. See how human-like conversations, real-time analytics, and intelligent responses transform business communications.</p>
-                        <div class="box">
-                            <span class="mb-0">Home</span><i class="first fa-regular fa-angle-right"></i><i class="second fa-regular fa-angle-right"></i><span class="mb-0 box_span">Demo</span>
-                        </div> 
+                        <h1 class="text-white">Live Demo</h1>                        <p class="text-white">Experience Bolgini's AI calling agent in action. See how human-like conversations, real-time analytics, and intelligent responses transform business communications.</p>
                     </div>
                 </div> 
                 <div class="col-lg-5 col-md-6 col-sm-12 col-12">
