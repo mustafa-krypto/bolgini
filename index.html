@@ -472,6 +472,116 @@
                 position: static;
             }
         }
+        /* Footer floating image enhancements */
+        .footer-section .footer-image {
+            position: absolute;
+            right: 90px;
+            bottom: 64px;
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .footer-section .footer-image:hover {
+            transform: translateY(-8px) scale(1.05);
+            filter: brightness(1.1);
+        }
+          /* Add a subtle circular pulse animation to attract attention */
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+                transform: scale(1);
+            }
+            70% { 
+                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
+                transform: scale(1.02);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+                transform: scale(1);
+            }
+        }
+        
+        .footer-section .footer-image {
+            animation: pulse 2s infinite;
+            border-radius: 50%;
+        }
+        
+        .footer-section .footer-image img {
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section .footer-image:hover img {
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+        }        /* Demo badge styling */
+        .demo-badge {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+            animation: bounce 2s infinite;
+            z-index: 10;
+        }
+        
+        .demo-badge-text {
+            white-space: nowrap;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        /* Add a click effect */
+        .footer-section .footer-image.clicked {
+            transform: translateY(-5px) scale(0.95);
+        }
+          /* Add a subtle circular glow effect */
+        .footer-section .footer-image::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, #4361ee, #3730a3);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-section .footer-image:hover::before {
+            opacity: 0.3;
+        }
+          @media (max-width: 768px) {
+            .footer-section .footer-image {
+                right: 20px;
+                bottom: 20px;
+            }
+            
+            .demo-badge {
+                font-size: 8px;
+                padding: 3px 6px;
+                top: -8px;
+                right: -12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .demo-badge {
+                font-size: 7px;
+                padding: 2px 4px;
+            }
+        }
     </style>
 </head>
 
@@ -530,7 +640,7 @@
                     <h1 class="text-white">Transform Business Communications with Bolgini AI</h1>
                     <p class="text-white">Experience the future of customer interactions with our AI calling agent that delivers human-like conversations, multilingual support, and intelligent business insights that drive growth.</p>                    <div class="banner-button">
                         <a class="button1 lets_talk text-decoration-none" href="./demo.html">Watch Demo<i class="circle fa-regular fa-angle-right"></i></a>
-                        <a class="lets_talk text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">🔥 Request Free Demo Account<i class="circle fa-regular fa-angle-right"></i></a>   
+                        <a class="lets_talk text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">🔥 Request Trial Account<i class="circle fa-regular fa-angle-right"></i></a>   
                     </div>
                 </div>
             </div>            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
@@ -1069,11 +1179,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="fixed-form-container">
-            <div class="image">
-                <figure class="footer-image mb-0">
-                    <img src="./assets/images/footer-image.png" alt="" class="img-fluid">
+        </div>        <div id="fixed-form-container">            <div class="image">
+                <figure class="footer-image mb-0" id="floating-demo-trigger" data-toggle="modal" data-target="#demoAccountModal" title="Click to request your free demo account!" style="cursor: pointer;">
+                    <img src="./assets/images/footer-image.png" alt="Request Free Demo Account" class="img-fluid">
+                    <div class="demo-badge">
+                        <span class="demo-badge-text">TRY IT OUT</span>
+                    </div>
                 </figure>
             </div>
             <div class="body">
@@ -1114,12 +1225,55 @@
 <script src="assets/js/animation.js"></script>
 <script>
 // Video section enhancements
-$(document).ready(function() {    // Banner video enhancement - add smooth entrance animation
+$(document).ready(function() {
+    // Banner video enhancement - add smooth entrance animation
     $('.banner-video-wrapper').addClass('visible');
     
     $('.banner-video-wrapper').on('load', function() {
         $(this).addClass('loaded');
     });
+      // Floating demo trigger functionality
+    $('#floating-demo-trigger').on('click', function(e) {
+        e.preventDefault();
+        
+        // Add a small animation before opening modal
+        $(this).addClass('clicked');
+        setTimeout(() => {
+            $(this).removeClass('clicked');
+        }, 200);
+        
+        // Track this interaction (if you have analytics)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+                'event_category': 'Demo Request',
+                'event_label': 'Floating Footer Image'
+            });
+        }
+        
+        // Show a brief success message (optional)
+        const badge = $(this).find('.demo-badge-text');
+        const originalText = badge.text();
+        badge.text('OPENING...');
+        
+        // Open the modal with a slight delay for better UX
+        setTimeout(() => {
+            $('#demoAccountModal').modal('show');
+            badge.text(originalText);
+        }, 300);
+    });
+    
+    // Add some hover effects for better UX
+    $('#floating-demo-trigger').hover(
+        function() {
+            $(this).find('.demo-badge').css('transform', 'scale(1.1)');
+        },
+        function() {
+            $(this).find('.demo-badge').css('transform', 'scale(1)');
+        }
+    );
+    
+    // Add tooltip for better UX - using native HTML5 title instead of Bootstrap tooltip to avoid conflicts
+    $('#floating-demo-trigger').attr('title', '🚀 Request a Trial Account!');
       // Apply a smooth fade-in effect to the video sections when they enter viewport
     $(window).scroll(function() {
         var bannerVideoSection = $('.banner-video-wrapper');
