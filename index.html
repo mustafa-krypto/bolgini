@@ -76,13 +76,46 @@
       "logo": "https://bolgini.com/assets/images/logo.png",
       "description": "Leading AI calling agent company providing automated outbound and inbound call solutions with business intelligence",
       "foundingDate": "2024",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-555-BOLGINI",
-        "contactType": "customer service",
-        "areaServed": "Global",
-        "availableLanguage": ["English", "Spanish", "French", "German", "Chinese", "Japanese", "Portuguese", "Italian", "Dutch", "Russian"]
-      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9873062228",
+          "contactType": "customer service",
+          "areaServed": "India",
+          "availableLanguage": ["English", "Hindi"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nagpur",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "India"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+973-33185642",
+          "contactType": "customer service",
+          "areaServed": "Middle East",
+          "availableLanguage": ["English", "Arabic"],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Building 747",
+            "addressLocality": "Manama",
+            "addressCountry": "Bahrain"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+966-553534603",
+          "contactType": "customer service",
+          "areaServed": "Saudi Arabia",
+          "availableLanguage": ["English", "Arabic"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jubail",
+            "addressCountry": "Saudi Arabia"
+          }
+        }
+      ],
       "sameAs": [
         "https://linkedin.com/company/bolgini",
         "https://twitter.com/bolgini",
@@ -1361,6 +1394,113 @@
             z-index: 15;
             animation: pulse 2s ease-in-out infinite;
         }
+        
+        /* Collapsible Office Location Styling */
+        .office-locations {
+            margin-top: 15px;
+        }
+        
+        .office-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .office-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(3px);
+        }
+        
+        .office-header {
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2) 0%, rgba(138, 230, 207, 0.1) 100%);
+            border-left: 3px solid #4361ee;
+            transition: all 0.3s ease;
+        }
+        
+        .office-header:hover {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.3) 0%, rgba(138, 230, 207, 0.2) 100%);
+            border-left-color: #8ae6cf;
+        }
+        
+        .office-header i:first-child {
+            color: #8ae6cf;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .office-header span {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+        
+        .toggle-icon {
+            color: #8ae6cf;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .office-item.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .office-details {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .office-item.active .office-details {
+            max-height: 150px;
+            padding: 15px;
+        }
+        
+        .office-details .text {
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease 0.1s;
+        }
+        
+        .office-item.active .office-details .text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .office-details .text:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Responsive adjustments for collapsible offices */
+        @media (max-width: 768px) {
+            .office-header {
+                padding: 10px 12px;
+            }
+            
+            .office-header span {
+                font-size: 13px;
+            }
+            
+            .office-item.active .office-details {
+                max-height: 120px;
+                padding: 12px;
+            }
+        }
+        
+        /* Add a subtle glow effect for active items */
+        .office-item.active {
+            box-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+        }
     </style>
 </head>
 
@@ -2025,17 +2165,71 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-sm-block">
                     <div class="icon">
                         <h4 class="heading text-white">Contact us</h4>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text">
-                                <i class="fa fa-phone fa-icon footer-location"></i>
-                                <a href="tel:+4733378901" class="mb-0 text text-decoration-none text-size-16">+91 9 8730 62228</a></li>
+                        <ul class="list-unstyled mb-3">
                             <li class="text">
                                 <i class="fa fa-envelope fa-icon footer-location"></i>
                                 <a href="mailto:info@bolgini.com" class="mb-0 text text-decoration-none text-size-16">info@bolgini.com</a></li>
-                            <li class="text">
-                                <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
-                                <p class="text-size-16">Silicon Valley, Nagpur</p></li>
                         </ul>
+                        
+                        <!-- Collapsible Office Locations -->
+                        <div class="office-locations">
+                            <!-- India Office -->
+                            <div class="office-item" data-office="india">
+                                <div class="office-header" onclick="toggleOffice('india')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>India Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-india">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+919873062228" class="mb-0 text text-decoration-none text-size-16">+91 9 8730 62228</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Silicon Valley, Nagpur</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bahrain Office -->
+                            <div class="office-item" data-office="bahrain">
+                                <div class="office-header" onclick="toggleOffice('bahrain')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Bahrain Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-bahrain">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+97333185642" class="mb-0 text text-decoration-none text-size-16">+973-33185642</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Building 747, Manama, Kingdom of Bahrain</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Saudi Arabia Office -->
+                            <div class="office-item" data-office="saudi">
+                                <div class="office-header" onclick="toggleOffice('saudi')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Saudi Arabia Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-saudi">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+966553534603" class="mb-0 text text-decoration-none text-size-16">+966553534603</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Jubail, Saudi Arabia</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2443,6 +2637,30 @@ $(document).ready(function() {
             originalConsoleError.apply(console, arguments);
         };
     }
+});
+
+// Office Location Toggle Function (outside of document ready)
+function toggleOffice(office) {
+    const officeItem = document.querySelector(`[data-office="${office}"]`);
+    const isActive = officeItem.classList.contains('active');
+    
+    // Close all other offices
+    document.querySelectorAll('.office-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Toggle current office (only open if it wasn't already active)
+    if (!isActive) {
+        officeItem.classList.add('active');
+    }
+}
+
+// Initialize first office as open on page load
+$(document).ready(function() {
+    // Open India office by default
+    setTimeout(function() {
+        toggleOffice('india');
+    }, 500);
 });
 </script>
 

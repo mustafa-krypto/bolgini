@@ -40,8 +40,39 @@
             "@type": "ContactPoint",
             "telephone": "+91-9873062228",
             "contactType": "customer service",
-            "areaServed": "IN",
-            "availableLanguage": ["English", "Hindi"]
+            "areaServed": "India",
+            "availableLanguage": ["English", "Hindi"],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Nagpur",
+              "addressRegion": "Maharashtra",
+              "addressCountry": "India"
+            }
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+973-33185642",
+            "contactType": "customer service",
+            "areaServed": "Middle East",
+            "availableLanguage": ["English", "Arabic"],
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Building 747",
+              "addressLocality": "Manama",
+              "addressCountry": "Bahrain"
+            }
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+966-553534603",
+            "contactType": "customer service",
+            "areaServed": "Saudi Arabia",
+            "availableLanguage": ["English", "Arabic"],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Jubail",
+              "addressCountry": "Saudi Arabia"
+            }
           },
           {
             "@type": "ContactPoint",
@@ -49,13 +80,7 @@
             "contactType": "customer service",
             "areaServed": "Worldwide"
           }
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Silicon Valley",
-          "addressRegion": "Nagpur", 
-          "addressCountry": "IN"
-        }
+        ]
       }
     }
     </script>
@@ -149,6 +174,380 @@
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Contact Page Office Locations Styling */
+        .contact-office-locations {
+            margin-top: 15px;
+        }
+        
+        .contact-office-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(67, 97, 238, 0.05);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-office-item:hover {
+            background: rgba(67, 97, 238, 0.08);
+            transform: translateX(3px);
+            border-color: rgba(67, 97, 238, 0.2);
+        }
+        
+        .contact-office-header {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(138, 230, 207, 0.05) 100%);
+            border-left: 3px solid #4361ee;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-office-header:hover {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.15) 0%, rgba(138, 230, 207, 0.1) 100%);
+            border-left-color: #8ae6cf;
+        }
+        
+        .contact-office-header i:first-child {
+            color: #4361ee;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+        
+        .contact-office-header span {
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            flex-grow: 1;
+        }
+        
+        .contact-toggle-icon {
+            color: #4361ee;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-office-item.active .contact-toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .contact-office-details {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            background: rgba(248, 249, 250, 0.8);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .contact-office-item.active .contact-office-details {
+            max-height: 120px;
+            padding: 15px;
+        }
+        
+        .office-info p {
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease 0.1s;
+        }
+        
+        .contact-office-item.active .office-info p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .office-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Footer Office Locations Styling - same as index.html */
+        .office-locations {
+            margin-top: 15px;
+        }
+        
+        .office-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .office-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(3px);
+        }
+        
+        .office-header {
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2) 0%, rgba(138, 230, 207, 0.1) 100%);
+            border-left: 3px solid #4361ee;
+            transition: all 0.3s ease;
+        }
+        
+        .office-header:hover {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.3) 0%, rgba(138, 230, 207, 0.2) 100%);
+            border-left-color: #8ae6cf;
+        }
+        
+        .office-header i:first-child {
+            color: #8ae6cf;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .office-header span {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+        
+        .toggle-icon {
+            color: #8ae6cf;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .office-item.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .office-details {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .office-item.active .office-details {
+            max-height: 150px;
+            padding: 15px;
+        }
+        
+        .office-details .text {
+            margin-bottom: 8px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease 0.1s;
+        }
+        
+        .office-item.active .office-details .text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .office-details .text:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .contact-office-header, .office-header {
+                padding: 10px 12px;
+            }
+            
+            .contact-office-header span, .office-header span {
+                font-size: 13px;
+            }
+            
+            .contact-office-item.active .contact-office-details,
+            .office-item.active .office-details {
+                max-height: 120px;
+                padding: 12px;
+            }
+        }
+        
+        /* Add glow effect for active items */
+        .contact-office-item.active {
+            box-shadow: 0 0 15px rgba(67, 97, 238, 0.2);
+        }
+        
+        .office-item.active {
+            box-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* Interactive Map Styling */
+        .map-controls {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin-bottom: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-controls h4 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .map-office-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .map-office-btn {
+            background: linear-gradient(135deg, #4361ee 0%, #3730a3 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+        
+        .map-office-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(135deg, #3730a3 0%, #2d1b69 100%);
+        }
+        
+        .map-office-btn.active {
+            background: linear-gradient(135deg, #8ae6cf 0%, #4fd1c7 100%);
+            color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(138, 230, 207, 0.4);
+        }
+        
+        .map-office-btn.active:hover {
+            background: linear-gradient(135deg, #4fd1c7 0%, #38a169 100%);
+            color: white;
+        }
+        
+        .office-map {
+            position: relative;
+            display: none;
+            transition: all 0.5s ease;
+        }
+        
+        .office-map.active {
+            display: block;
+            animation: fadeInMap 0.5s ease;
+        }
+        
+        @keyframes fadeInMap {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 350px;
+        }
+        
+        .office-info-card h5 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .office-info-card h5 i {
+            color: #4361ee;
+            font-size: 20px;
+        }
+        
+        .office-info-card p {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .office-info-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .office-info-card p i {
+            color: #4361ee;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .office-info-card a {
+            color: #4361ee;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .office-info-card a:hover {
+            color: #8ae6cf;
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments for maps */
+        @media (max-width: 768px) {
+            .map-office-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .map-office-btn {
+                width: 200px;
+                justify-content: center;
+            }
+            
+            .map-overlay {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 15px;
+                max-width: none;
+            }
+            
+            .office-map iframe {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .map-controls {
+                padding: 20px 15px;
+            }
+            
+            .map-office-btn {
+                width: 180px;
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .office-info-card {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -229,33 +628,8 @@
             <div class="col-lg-6 col-md-12 col-sm-12 col-12">                <div class="contact_content" data-aos="fade-right">
                     <h5>Our Contact Details</h5>
                     <h2>Get in Touch with Bolgini</h2>
-                    <div class="contact-box">
-                        <div class="box-image">
-                            <figure class="contact-location">
-                                <img src="./assets/images/contact-location.png" alt="" class="img-fluid">
-                            </figure> 
-                        </div>
-                        <div class="box-content">
-                            <h4>Location:</h4>
-                            <p class="text-size-18">Silicon Valley, Nagpur 440002 India</p>
-                        </div>
-                    </div>
-                    <div class="contact-box box-mb">
-                        <div class="box-image">
-                            <figure class="contact-phone">
-                                <img src="./assets/images/contact-phone.png" alt="" class="img-fluid">
-                            </figure>
-                        </div>
-                        <div class="box-content">
-                            <h4 class="heading">Phone:</h4>
-                            <p>
-                                <a href="tel:+919873062228" class="text-decoration-none text text-size-18">(+91 98730 62228)</a>
-                            </p>
-                            <p>
-                                <a href="tel:+919873062228" class="mb-0 text-decoration-none text text-size-18">Business Inquiries</a>
-                            </p>
-                        </div>
-                    </div>
+                    
+                    <!-- Email Section (Global) -->
                     <div class="contact-box">
                         <div class="box-image">
                             <figure class="contact-email">
@@ -270,6 +644,66 @@
                             <p>
                                 <a href="mailto:mustafa@bolgini.com" class="mb-0 text-decoration-none text-size-18">mustafa@bolgini.com</a>
                             </p>
+                        </div>
+                    </div>
+
+                    <!-- Global Offices Section -->
+                    <div class="contact-box">
+                        <div class="box-image">
+                            <figure class="contact-location">
+                                <img src="./assets/images/contact-location.png" alt="" class="img-fluid">
+                            </figure> 
+                        </div>
+                        <div class="box-content">
+                            <h4>Our Global Offices:</h4>
+                            
+                            <!-- Collapsible Office Locations -->
+                            <div class="contact-office-locations">
+                                <!-- India Office -->
+                                <div class="contact-office-item" data-office="india">
+                                    <div class="contact-office-header" onclick="toggleContactOffice('india')">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>India Office</span>
+                                        <i class="fas fa-chevron-down contact-toggle-icon"></i>
+                                    </div>
+                                    <div class="contact-office-details" id="contact-office-india">
+                                        <div class="office-info">
+                                            <p class="text-size-16"><strong>Phone:</strong> <a href="tel:+919873062228" class="text-decoration-none">(+91 98730 62228)</a></p>
+                                            <p class="text-size-16"><strong>Address:</strong> Silicon Valley, Nagpur 440002, India</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bahrain Office -->
+                                <div class="contact-office-item" data-office="bahrain">
+                                    <div class="contact-office-header" onclick="toggleContactOffice('bahrain')">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Bahrain Office</span>
+                                        <i class="fas fa-chevron-down contact-toggle-icon"></i>
+                                    </div>
+                                    <div class="contact-office-details" id="contact-office-bahrain">
+                                        <div class="office-info">
+                                            <p class="text-size-16"><strong>Phone:</strong> <a href="tel:+97333185642" class="text-decoration-none">+973-33185642</a></p>
+                                            <p class="text-size-16"><strong>Address:</strong> Building 747, Manama, Kingdom of Bahrain</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Saudi Arabia Office -->
+                                <div class="contact-office-item" data-office="saudi">
+                                    <div class="contact-office-header" onclick="toggleContactOffice('saudi')">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Saudi Arabia Office</span>
+                                        <i class="fas fa-chevron-down contact-toggle-icon"></i>
+                                    </div>
+                                    <div class="contact-office-details" id="contact-office-saudi">
+                                        <div class="office-info">
+                                            <p class="text-size-16"><strong>Phone:</strong> <a href="tel:+966553534603" class="text-decoration-none">+966553534603</a></p>
+                                            <p class="text-size-16"><strong>Address:</strong> Jubail, Saudi Arabia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -336,11 +770,72 @@
 
 <!-- Map Section -->
 <div class="contact_map_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="map-controls text-center mb-4">
+                    <h4 class="mb-3">Visit Our Offices</h4>
+                    <div class="map-office-buttons">
+                        <button class="map-office-btn active" onclick="switchMapOffice('india')" data-office="india">
+                            <i class="fas fa-map-marker-alt"></i> India Office
+                        </button>
+                        <button class="map-office-btn" onclick="switchMapOffice('bahrain')" data-office="bahrain">
+                            <i class="fas fa-map-marker-alt"></i> Bahrain Office
+                        </button>
+                        <button class="map-office-btn" onclick="switchMapOffice('saudi')" data-office="saudi">
+                            <i class="fas fa-map-marker-alt"></i> Saudi Arabia Office
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.3329737833114!2d144.96011341590386!3d-37.80566904135444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2s!4v1669200882885!5m2!1sen!2s"
-            width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- India Office Map -->
+            <div class="office-map active" id="map-india">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59639.84149922709!2d79.0296665!3d21.1458004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x19b37d06d0bb3e2b!2sNagpur%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2s!4v1699000000000!5m2!1sen!2s"
+                width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">
+                    <div class="office-info-card">
+                        <h5><i class="fas fa-building"></i> KryptoMindz Technologies</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Silicon Valley, Nagpur 440002, India</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+919873062228">+91 98730 62228</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@bolgini.com">info@bolgini.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bahrain Office Map -->
+            <div class="office-map" id="map-bahrain">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115681.73397587513!2d50.54429135!3d26.2285161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49afe94a32dd79%3A0x3f8b9a5c1b9d2d7b!2sManama%2C%20Bahrain!5e0!3m2!1sen!2s!4v1699000000001!5m2!1sen!2s"
+                width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">
+                    <div class="office-info-card">
+                        <h5><i class="fas fa-building"></i> Haiba Enterprises</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Building 747, Manama, Kingdom of Bahrain</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+97333185642">+973-33185642</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@bolgini.com">info@bolgini.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saudi Arabia Office Map -->
+            <div class="office-map" id="map-saudi">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116621.24598527708!2d49.6584433!3d27.0174387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e35e53cabe8fedf%3A0x147d26e30e7b0569!2sJubail%2C%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1699000000002!5m2!1sen!2s"
+                width="1920" height="556" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-overlay">
+                    <div class="office-info-card">
+                        <h5><i class="fas fa-building"></i> Haiba Enterprises</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> Jubail, Saudi Arabia</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+966553534603">+966553534603</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@bolgini.com">info@bolgini.com</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -394,18 +889,72 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-sm-block">
                     <div class="icon">
-                        <h4 class="heading text-white">Contact Us</h4>
-                        <ul class="list-unstyled mb-0">
-                            <li class="text">
-                                <i class="fa fa-phone fa-icon footer-location"></i>
-                                <a href="tel:+919873062228" class="mb-0 text text-decoration-none text-size-16">+91 98730 62228</a></li>
+                        <h4 class="heading text-white">Contact us</h4>
+                        <ul class="list-unstyled mb-3">
                             <li class="text">
                                 <i class="fa fa-envelope fa-icon footer-location"></i>
                                 <a href="mailto:info@bolgini.com" class="mb-0 text text-decoration-none text-size-16">info@bolgini.com</a></li>
-                            <li class="text">
-                                <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
-                                <p class="text-size-16">Silicon Valley, Nagpur</p></li>
                         </ul>
+                        
+                        <!-- Collapsible Office Locations -->
+                        <div class="office-locations">
+                            <!-- India Office -->
+                            <div class="office-item" data-office="india">
+                                <div class="office-header" onclick="toggleOffice('india')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>India Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-india">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+919873062228" class="mb-0 text text-decoration-none text-size-16">+91 9 8730 62228</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Silicon Valley, Nagpur</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bahrain Office -->
+                            <div class="office-item" data-office="bahrain">
+                                <div class="office-header" onclick="toggleOffice('bahrain')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Bahrain Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-bahrain">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+97333185642" class="mb-0 text text-decoration-none text-size-16">+973-33185642</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Building 747, Manama, Kingdom of Bahrain</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Saudi Arabia Office -->
+                            <div class="office-item" data-office="saudi">
+                                <div class="office-header" onclick="toggleOffice('saudi')">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Saudi Arabia Office</span>
+                                    <i class="fas fa-chevron-down toggle-icon"></i>
+                                </div>
+                                <div class="office-details" id="office-saudi">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="text">
+                                            <i class="fa fa-phone fa-icon footer-location"></i>
+                                            <a href="tel:+966553534603" class="mb-0 text text-decoration-none text-size-16">+966553534603</a></li>
+                                        <li class="text">
+                                            <i class="fa-solid fa-location-dot footer-location footer-location3"></i>
+                                            <p class="text-size-16">Jubail, Saudi Arabia</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -512,6 +1061,74 @@ $(document).ready(function() {
         });
     });
 });
+
+// Contact Page Office Location Toggle Function
+function toggleContactOffice(office) {
+    const officeItem = document.querySelector(`[data-office="${office}"]`);
+    const isActive = officeItem.classList.contains('active');
+    
+    // Close all other offices in contact section
+    document.querySelectorAll('.contact-office-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Toggle current office (only open if it wasn't already active)
+    if (!isActive) {
+        officeItem.classList.add('active');
+    }
+}
+
+// Footer Office Location Toggle Function (same as index.html)
+function toggleOffice(office) {
+    const officeItem = document.querySelector(`.office-locations [data-office="${office}"]`);
+    const isActive = officeItem.classList.contains('active');
+    
+    // Close all other offices in footer
+    document.querySelectorAll('.office-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Toggle current office (only open if it wasn't already active)
+    if (!isActive) {
+        officeItem.classList.add('active');
+    }
+}
+
+// Initialize offices on page load
+$(document).ready(function() {
+    // Open India office by default in both sections
+    setTimeout(function() {
+        toggleContactOffice('india');
+        toggleOffice('india');
+    }, 500);
+});
+
+// Map Office Switching Function
+function switchMapOffice(office) {
+    // Remove active class from all buttons
+    document.querySelectorAll('.map-office-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    document.querySelector(`[data-office="${office}"]`).classList.add('active');
+    
+    // Hide all maps
+    document.querySelectorAll('.office-map').forEach(map => {
+        map.classList.remove('active');
+    });
+    
+    // Show selected map
+    document.getElementById(`map-${office}`).classList.add('active');
+    
+    // Analytics tracking (if available)
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'map_office_view', {
+            'office_location': office,
+            'event_category': 'contact_interaction'
+        });
+    }
+}
 </script>
 </body>
 </html>
