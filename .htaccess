@@ -1,6 +1,21 @@
 # Bolgini AI Calling Agent - Technical SEO Configuration
 # =======================================================
 
+# URL Rewrite Rules for SEO (Redirect non-.html to .html)
+RewriteEngine On
+
+# Redirect URLs without .html to .html versions
+RewriteRule ^contact$ /contact.html [R=301,L]
+RewriteRule ^demo$ /demo.html [R=301,L]
+RewriteRule ^features$ /features.html [R=301,L]
+RewriteRule ^pricing$ /pricing.html [R=301,L]
+RewriteRule ^about$ /about.html [R=301,L]
+RewriteRule ^use-cases$ /use-cases.html [R=301,L]
+RewriteRule ^service$ /service.html [R=301,L]
+RewriteRule ^projects$ /projects.html [R=301,L]
+RewriteRule ^enquiry$ /enquiry.html [R=301,L]
+RewriteRule ^blog$ /blog.html [R=301,L]
+
 # Enable compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
