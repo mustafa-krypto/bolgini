@@ -80,14 +80,17 @@
   </url>
   
   <!-- Blog and Content Marketing -->
+  <!--
   <url>
     <loc>https://bolgini.com/blog.html</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
   
   <!-- Industry-Specific Landing Pages -->
+  <!--
   <url>
     <loc>https://bolgini.com/real-estate-ai-calling-agent.html</loc>
     <lastmod>2025-08-18</lastmod>
@@ -101,7 +104,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://bolgini.com/ecommerce-ai-calling-agent.html</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -149,19 +152,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://bolgini.com/legal-services-ai-calling-agent.html</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://bolgini.com/nonprofit-ai-calling-agent.html</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://bolgini.com/hospitality-tourism-ai-calling-agent.html</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -174,23 +177,29 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
   
   <!-- Geographic Targeting -->
+  <!--
   <url>
     <loc>https://bolgini.com/ai-calling-agent-india.html</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-    <!-- Voice Search Optimization -->
+  -->
+  <!-- Voice Search Optimization -->
+  <!--
   <url>
     <loc>https://bolgini.com/voice-search-optimization.html</loc>
     <lastmod>2025-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  -->
   
   <!-- Blog Posts -->
+  <!--
   <url>
     <loc>https://bolgini.com/blog.html</loc>
     <lastmod>2025-01-05</lastmod>
@@ -207,7 +216,6 @@
   
   <url>
     <loc>https://bolgini.com/blog/inbound-call-automation-guide.html</loc>
-    <lastmod>2025-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -232,4 +240,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
 </urlset>
