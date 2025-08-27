@@ -1068,7 +1068,7 @@
                             <a class="nav-link" href="./contact.html">Contact us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link lets_talk" href="./enquiry.html">Book Demo<i class="circle fa-regular fa-angle-right"></i></a>
+                            <a class="nav-link lets_talk" href="https://app.bolgini.com/bolgini/login.html">Sign In<i class="circle fa-regular fa-angle-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -1278,7 +1278,7 @@
                     </div>
                 </div>
                 <div class="demo-controls">
-                    <a href="./enquiry.html" class="demo-button">Book Personalized Demo</a>
+                    <a href="https://app.bolgini.com/bolgini/login.html" class="demo-button">Sign In</a>
                     <a href="#" class="demo-button" onclick="addTranscriptMessage()">Continue Conversation</a>
                 </div>
             </div>
@@ -1420,10 +1420,10 @@
         </div>
         <div id="fixed-form-container">
             <div class="image">
-                <figure class="footer-image mb-0" id="floating-demo-trigger" data-toggle="modal" data-target="#demoAccountModal">
-                    <img src="./assets/images/footer-image.png" alt="AI calling agent customer service representative - click to try demo" class="img-fluid">
+                <figure class="footer-image mb-0" id="floating-demo-trigger" onclick="window.open('https://app.bolgini.com', '_blank')" title="Click to start your free trial!">
+                    <img src="./assets/images/footer-image.png" alt="Start Free Trial" class="img-fluid">
                     <div class="demo-badge">
-                        <span class="demo-badge-text">Try Now!</span>
+                        <span class="demo-badge-text">SIGN UP FREE</span>
                     </div>
                 </figure>
             </div>
@@ -1560,11 +1560,9 @@ AOS.init({
 
 // Enhanced demo page functionality
 $(document).ready(function() {
-    // Floating demo trigger functionality
+    // Updated floating demo trigger - now redirects to signup
     $('#floating-demo-trigger').on('click', function(e) {
-        e.preventDefault();
-        
-        // Add a small animation before opening modal
+        // Add a small animation before redirecting
         $(this).addClass('clicked');
         setTimeout(() => {
             $(this).removeClass('clicked');
@@ -1573,19 +1571,19 @@ $(document).ready(function() {
         // Track this interaction (if you have analytics)
         if (typeof gtag !== 'undefined') {
             gtag('event', 'click', {
-                'event_category': 'Demo Request',
+                'event_category': 'Signup',
                 'event_label': 'Floating Footer Image - Demo Page'
             });
         }
         
-        // Show a brief success message (optional)
+        // Show a brief loading message
         const badge = $(this).find('.demo-badge-text');
         const originalText = badge.text();
         badge.text('OPENING...');
         
-        // Open the modal with a slight delay for better UX
+        // Redirect to signup page with a slight delay for better UX
         setTimeout(() => {
-            $('#demoAccountModal').modal('show');
+            window.open('https://app.bolgini.com', '_blank');
             badge.text(originalText);
         }, 300);
     });
@@ -1601,7 +1599,7 @@ $(document).ready(function() {
     );
     
     // Add tooltip for better UX
-    $('#floating-demo-trigger').attr('title', '🚀 Request a Trial Account!');
+    $('#floating-demo-trigger').attr('title', '🚀 Start Your Free Trial!');
     
     // Demo Account Modal Form Submission
     $('#demoAccountForm').on('submit', function(e) {

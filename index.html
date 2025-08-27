@@ -1552,7 +1552,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link lets_talk" href="./enquiry.html">Book Demo<i class="circle fa-regular fa-angle-right"></i></a>
+                            <a class="nav-link lets_talk" href="https://app.bolgini.com/bolgini/login.html">Sign In<i class="circle fa-regular fa-angle-right"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -1661,8 +1661,8 @@
                             <span>Live Demo</span>
                             <i class="circle fas fa-play"></i>
                         </a>
-                        <a class="button2 text-decoration-none" href="#" data-toggle="modal" data-target="#demoAccountModal">
-                            <span>Request Trial Account</span>
+                        <a class="button2 text-decoration-none" href="https://app.bolgini.com">
+                            <span>Start Free Trial</span>
                             <i class="circle fas fa-rocket"></i>
                         </a>   
                     </div>
@@ -2246,10 +2246,10 @@
                 </div>
             </div>
         </div>        <div id="fixed-form-container">            <div class="image">
-                <figure class="footer-image mb-0" id="floating-demo-trigger" data-toggle="modal" data-target="#demoAccountModal" title="Click to request your free demo account!" style="cursor: pointer;">
-                    <img src="./assets/images/footer-image.png" alt="Request Free Demo Account" class="img-fluid">
+                <figure class="footer-image mb-0" id="floating-demo-trigger" onclick="window.open('https://app.bolgini.com', '_blank')" title="Click to start your free trial!" style="cursor: pointer;">
+                    <img src="./assets/images/footer-image.png" alt="Start Free Trial" class="img-fluid">
                     <div class="demo-badge">
-                        <span class="demo-badge-text">TRY IT OUT</span>
+                        <span class="demo-badge-text">SIGN UP FREE</span>
                     </div>
                 </figure>
             </div>
@@ -2507,10 +2507,9 @@ $(document).ready(function() {
     
     simulateAISounds();
       // Floating demo trigger functionality
+    // Updated floating demo trigger - now redirects to signup
     $('#floating-demo-trigger').on('click', function(e) {
-        e.preventDefault();
-        
-        // Add a small animation before opening modal
+        // Add a small animation before redirecting
         $(this).addClass('clicked');
         setTimeout(() => {
             $(this).removeClass('clicked');
@@ -2519,19 +2518,19 @@ $(document).ready(function() {
         // Track this interaction (if you have analytics)
         if (typeof gtag !== 'undefined') {
             gtag('event', 'click', {
-                'event_category': 'Demo Request',
+                'event_category': 'Signup',
                 'event_label': 'Floating Footer Image'
             });
         }
         
-        // Show a brief success message (optional)
+        // Show a brief loading message
         const badge = $(this).find('.demo-badge-text');
         const originalText = badge.text();
         badge.text('OPENING...');
         
-        // Open the modal with a slight delay for better UX
+        // Redirect to signup page with a slight delay for better UX
         setTimeout(() => {
-            $('#demoAccountModal').modal('show');
+            window.open('https://app.bolgini.com', '_blank');
             badge.text(originalText);
         }, 300);
     });
@@ -2546,8 +2545,8 @@ $(document).ready(function() {
         }
     );
     
-    // Add tooltip for better UX - using native HTML5 title instead of Bootstrap tooltip to avoid conflicts
-    $('#floating-demo-trigger').attr('title', '🚀 Request a Trial Account!');
+    // Add tooltip for better UX
+    $('#floating-demo-trigger').attr('title', '🚀 Start Your Free Trial!');
       // Apply a smooth fade-in effect to the video sections when they enter viewport
     $(window).scroll(function() {
         var bannerVideoSection = $('.banner-video-wrapper');
